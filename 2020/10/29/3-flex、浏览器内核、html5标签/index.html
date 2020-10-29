@@ -7,17 +7,17 @@
   
   
   
-  <title>搭建博客 | Hexo</title>
+  <title>3.flex、浏览器内核、html5标签 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需要的工具1.node环境 2.npm 3.window10 系统 4.我们使用hexo来搭建博客 安装node环境和npm包管理工具检查node环境 （node -v） 和npm包管理工具（npm -v），如果显示数字，格式为xx.xx.x就表示安装成功 如果使用npm安装较慢，可以使用国内的淘宝镜像来下载，以后就用cnpm代替npm来下载了： (npm install -g cnpm --re">
+  <meta name="description" content="flex布局的应用场景 在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;   用弹性盒实现圣杯布局123456789101112131415161718192021222324252627282930313233343536&lt;div class&#x3D;&#39;cont">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建博客">
-<meta property="og:url" content="http://example.com/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="3.flex、浏览器内核、html5标签">
+<meta property="og:url" content="http://example.com/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="需要的工具1.node环境 2.npm 3.window10 系统 4.我们使用hexo来搭建博客 安装node环境和npm包管理工具检查node环境 （node -v） 和npm包管理工具（npm -v），如果显示数字，格式为xx.xx.x就表示安装成功 如果使用npm安装较慢，可以使用国内的淘宝镜像来下载，以后就用cnpm代替npm来下载了： (npm install -g cnpm --re">
+<meta property="og:description" content="flex布局的应用场景 在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;   用弹性盒实现圣杯布局123456789101112131415161718192021222324252627282930313233343536&lt;div class&#x3D;&#39;cont">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-20T01:53:01.000Z">
-<meta property="article:modified_time" content="2020-09-20T01:54:02.931Z">
+<meta property="article:published_time" content="2020-10-29T15:54:38.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:55:05.713Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -276,11 +276,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-3-flex、浏览器内核、html5标签" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-      <time datetime="2020-09-20T01:53:01.000Z" itemprop="datePublished">2020-09-20</time>
+      <a  href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/" class="article-date">
+      <time datetime="2020-10-29T15:54:38.000Z" itemprop="datePublished">2020-10-29</time>
 </a>
 
     </div>
@@ -294,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      搭建博客
+      3.flex、浏览器内核、html5标签
     </h1>
   
 
@@ -312,46 +312,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="需要的工具"><a href="#需要的工具" class="headerlink" title="需要的工具"></a>需要的工具</h2><pre><code>1.node环境
-2.npm
-3.window10 系统
-4.我们使用hexo来搭建博客</code></pre>
-<h2 id="安装node环境和npm包管理工具"><a href="#安装node环境和npm包管理工具" class="headerlink" title="安装node环境和npm包管理工具"></a>安装node环境和npm包管理工具</h2><pre><code>检查node环境 （node -v） 和npm包管理工具（npm -v），如果显示数字，格式为xx.xx.x就表示安装成功
-如果使用npm安装较慢，可以使用国内的淘宝镜像来下载，以后就用cnpm代替npm来下载了：
-(npm install -g cnpm --registry-https://registry.npm.taobao.org)</code></pre>
-<h2 id="使用cnpm安装全局的hexo框架"><a href="#使用cnpm安装全局的hexo框架" class="headerlink" title="使用cnpm安装全局的hexo框架"></a>使用cnpm安装全局的hexo框架</h2><pre><code>(cnpm install -g hexo-cli)
-使用(hexo -v)来验证安装是否成功</code></pre>
-<h2 id="在当前文件夹下新建一个blog文件夹"><a href="#在当前文件夹下新建一个blog文件夹" class="headerlink" title="在当前文件夹下新建一个blog文件夹"></a>在当前文件夹下新建一个blog文件夹</h2><pre><code>以后博客所有的文件都存放在blog文件夹里，如果出现了错误，就直接删除该文件夹即可
-使用(mkdir blog)即可新建blog文件夹
-使用(cd blog)进入该文件夹中</code></pre>
-<h2 id="使用hexo生成一个博客"><a href="#使用hexo生成一个博客" class="headerlink" title="使用hexo生成一个博客"></a>使用hexo生成一个博客</h2><pre><code>命令行中键入(hexo init)来初始化一个博客，这里有人反映会有点慢，我自己下载挺快的，不知道是不是安装了git的原因
-我们直接打开blog文件夹就可以看到自动生成的所有文件</code></pre>
-<h2 id="启动博客"><a href="#启动博客" class="headerlink" title="启动博客"></a>启动博客</h2><pre><code>命令行键入(hexo s)
-此时就会在命令行的4000端口启用
-在浏览器中输入：http://localhost:4000 即可看到创建好的个人博客</code></pre>
-<h2 id="写一篇文章"><a href="#写一篇文章" class="headerlink" title="写一篇文章"></a>写一篇文章</h2><pre><code>此时可以使用(hexo n &quot;文章名称&quot;)来写一篇新的文章
-也可以直接在 blog/source/_post 文件夹下新建一个.md文件，就是一篇新的文章，其中可以使用自己喜欢的编辑器写好，保存（这种方法简单）</code></pre>
-<h2 id="将文章推送到博客中去"><a href="#将文章推送到博客中去" class="headerlink" title="将文章推送到博客中去"></a>将文章推送到博客中去</h2><pre><code>使用(hexo c)清空一下
-使用(hexo g)生成一下
-重新启动博客(hexo s)
-这样就可以在 http://localhost:4000 中查看我们的新文章了</code></pre>
-<h2 id="将博客部署到远端-github-上去"><a href="#将博客部署到远端-github-上去" class="headerlink" title="将博客部署到远端(github)上去"></a>将博客部署到远端(github)上去</h2><pre><code>博客只能在本地使用当然不太好，所以我们需要将其部署到远端，我们可以通过域名来随时访问，这样博客的意义才体现出来
-首先，创建一个自己的github账号
-创建一个新仓库，仓库名必须是你的github用户名.github.io，如:ryan.github.io
-装一个git部署的插件，键入(cnpm install --save hexo-deployer-git)
-接下来设置_config.yml配置文件</code></pre>
-<h2 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="配置_config.yml"></a>配置_config.yml</h2><pre><code>键入(nodepad _config.yml)会弹出一个记事本，找到最后一行，在deploy后面添加
-    type: &#39;git&#39;
-    repo: https://github.com/你自己的仓库地址
-    branch: master
-保存即可</code></pre>
-<h2 id="部署到远端即可"><a href="#部署到远端即可" class="headerlink" title="部署到远端即可"></a>部署到远端即可</h2><pre><code>键入(hexo d)，可能要输入你的github账户名称和密码
-接下来，直接输入https://你的仓库名称即可 就可查看自己的博客</code></pre>
-<h2 id="增加或者修改文章"><a href="#增加或者修改文章" class="headerlink" title="增加或者修改文章"></a>增加或者修改文章</h2><pre><code>在blog/source/_posts/文件夹下找到要修改的文章进行修改或添加，修改完成后直接
-(hexo c)(hexo g)(hexo d) 三次操作即可推送到远端</code></pre>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><pre><code>如果现有主题不满意的话，可以在github上寻找好看的主题，克隆代码后放在blog/themes文件夹下
-然后配置_config.yml文件，找到theme：修改为新主题的名称后保存，然后
-(hexo c)(hexo g)(hexo d) 三次操作即可推送到远端</code></pre>
+        <h2 id="flex布局的应用场景"><a href="#flex布局的应用场景" class="headerlink" title="flex布局的应用场景"></a>flex布局的应用场景</h2><blockquote>
+<p>在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;</p>
+</blockquote>
+<ul>
+<li>用弹性盒实现圣杯布局<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;container&#39;&gt;</span><br><span class="line">  &lt;header&gt;顶部&lt;&#x2F;header&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;left&#39;&gt;中间左边&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;content&#39;&gt;中间中间&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;right&#39;&gt;中间右边&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;section&gt;</span><br><span class="line">  &lt;footer&gt;底部&lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">  display:flex;</span><br><span class="line">  flex-direction:column;</span><br><span class="line">  height:100vh;</span><br><span class="line">&#125;</span><br><span class="line">header &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">  background:green;</span><br><span class="line">  flex:1;</span><br><span class="line">  display:flex;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">.left .right &#123;</span><br><span class="line">  background:yellow;</span><br><span class="line">  flex:0 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.content &#123;</span><br><span class="line">  background:pink;</span><br><span class="line">  flex:1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"><a href="#常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧" class="headerlink" title="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"></a>常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</h2><blockquote>
+<p>浏览器内核</p>
+</blockquote>
+<ul>
+<li>Trident: ie/360/搜狗浏览器</li>
+<li>Geoko: 火狐</li>
+<li>Presto: 欧朋opera</li>
+<li>Webkit: 谷歌/safari<blockquote>
+<p>浏览器的兼容</p>
+</blockquote>
+</li>
+<li>解决浏览器内外</li>
+</ul>
+<h2 id="html5标签有什么新特性"><a href="#html5标签有什么新特性" class="headerlink" title="html5标签有什么新特性"></a>html5标签有什么新特性</h2><ul>
+<li>添加了canvas画图</li>
+<li>新增语义化标签</li>
+<li>本地存储localStorage，sessionStorage，webSocket</li>
+<li>表单控件</li>
+</ul>
+<h2 id="如何处理html5标签的浏览器兼容问题？"><a href="#如何处理html5标签的浏览器兼容问题？" class="headerlink" title="如何处理html5标签的浏览器兼容问题？"></a>如何处理html5标签的浏览器兼容问题？</h2><blockquote>
+<p>header和footer标签在ie6.7中不支持</p>
+</blockquote>
+<ul>
+<li>ie支持document.createElement(),默认样式需要自己写</li>
+<li>html5shiv，这是一个google的一个html5.js文件，引入到head中，再在css中加入一段代码即可在ie中使用语义化标签</li>
+</ul>
 
       
     </div>
@@ -360,13 +354,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a></p>
+        <p><span>本文标题:</span><a  href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/">3.flex、浏览器内核、html5标签</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
-        <p><span>发布时间:</span>2020年09月20日 - 09时53分</p>
-        <p><span>最后更新:</span>2020年09月20日 - 09时54分</p>
+        <p><span>发布时间:</span>2020年10月29日 - 23时54分</p>
+        <p><span>最后更新:</span>2020年10月29日 - 23时55分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="搭建博客">http://example.com/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/　　作者: " title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/" title="3.flex、浏览器内核、html5标签">http://example.com/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/　　作者: " title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -377,18 +371,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/09/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          数据结构
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/09/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a  href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2.盒子模型、优先级、伪类</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -400,7 +385,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">需要的工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85node%E7%8E%AF%E5%A2%83%E5%92%8Cnpm%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">安装node环境和npm包管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8cnpm%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E7%9A%84hexo%E6%A1%86%E6%9E%B6"><span class="toc-number">3.</span> <span class="toc-text">使用cnpm安装全局的hexo框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%BD%93%E5%89%8D%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAblog%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">4.</span> <span class="toc-text">在当前文件夹下新建一个blog文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8hexo%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2"><span class="toc-number">5.</span> <span class="toc-text">使用hexo生成一个博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%8D%9A%E5%AE%A2"><span class="toc-number">6.</span> <span class="toc-text">启动博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="toc-number">7.</span> <span class="toc-text">写一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E6%96%87%E7%AB%A0%E6%8E%A8%E9%80%81%E5%88%B0%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8E%BB"><span class="toc-number">8.</span> <span class="toc-text">将文章推送到博客中去</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%AB%AF-github-%E4%B8%8A%E5%8E%BB"><span class="toc-number">9.</span> <span class="toc-text">将博客部署到远端(github)上去</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-config-yml"><span class="toc-number">10.</span> <span class="toc-text">配置_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%AB%AF%E5%8D%B3%E5%8F%AF"><span class="toc-number">11.</span> <span class="toc-text">部署到远端即可</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0"><span class="toc-number">12.</span> <span class="toc-text">增加或者修改文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-number">13.</span> <span class="toc-text">修改主题</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#flex%E5%B8%83%E5%B1%80%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">flex布局的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%86%85%E6%A0%B8%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%EF%BC%9F%E5%8E%9F%E5%9B%A0%EF%BC%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9F%E5%B8%B8%E7%94%A8hack%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html5%E6%A0%87%E7%AD%BE%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">html5标签有什么新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86html5%E6%A0%87%E7%AD%BE%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">如何处理html5标签的浏览器兼容问题？</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -473,13 +458,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/09/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="上一篇: 数据结构">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/09/19/hello-world/" title="下一篇: Hello World">
+            <a  href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/" title="下一篇: 2.盒子模型、优先级、伪类">
                 <i class="fa fa-angle-right"></i>
             </a>
         
