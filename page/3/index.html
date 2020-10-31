@@ -277,6 +277,337 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-4-移动端真机调试" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/10/30/4-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/" class="article-date">
+      <time datetime="2020-10-29T16:34:09.000Z" itemprop="datePublished">2020-10-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/10/30/4-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/">4.移动端真机调试</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="HBuilder"><a href="#HBuilder" class="headerlink" title="HBuilder"></a>HBuilder</h2><blockquote>
+<p>HBuilder运行一个移动的app特别好用，也比较简单</p>
+</blockquote>
+<ul>
+<li>把手机连接到电脑</li>
+<li>打开hbuilder，点击基座运行</li>
+<li>会下载一个hbuilder在手机上</li>
+</ul>
+<h2 id="关闭ios键盘首字母大写"><a href="#关闭ios键盘首字母大写" class="headerlink" title="关闭ios键盘首字母大写"></a>关闭ios键盘首字母大写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; autocapitalize&#x3D;&quot;off&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ios键盘点击默认弹出数字"><a href="#ios键盘点击默认弹出数字" class="headerlink" title="ios键盘点击默认弹出数字"></a>ios键盘点击默认弹出数字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;tel&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ios按钮默认高亮部分删除"><a href="#ios按钮默认高亮部分删除" class="headerlink" title="ios按钮默认高亮部分删除"></a>ios按钮默认高亮部分删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-tap-highlight-color: rgba(0,0,0,0);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-3-flex、浏览器内核、html5标签" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/" class="article-date">
+      <time datetime="2020-10-29T15:54:38.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/">3.flex、浏览器内核、html5标签</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="flex布局的应用场景"><a href="#flex布局的应用场景" class="headerlink" title="flex布局的应用场景"></a>flex布局的应用场景</h2><blockquote>
+<p>在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;</p>
+</blockquote>
+<ul>
+<li>用弹性盒实现圣杯布局<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;container&#39;&gt;</span><br><span class="line">  &lt;header&gt;顶部&lt;&#x2F;header&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;left&#39;&gt;中间左边&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;content&#39;&gt;中间中间&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;right&#39;&gt;中间右边&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;section&gt;</span><br><span class="line">  &lt;footer&gt;底部&lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">  display:flex;</span><br><span class="line">  flex-direction:column;</span><br><span class="line">  height:100vh;</span><br><span class="line">&#125;</span><br><span class="line">header &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">  background:green;</span><br><span class="line">  flex:1;</span><br><span class="line">  display:flex;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">.left .right &#123;</span><br><span class="line">  background:yellow;</span><br><span class="line">  flex:0 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.content &#123;</span><br><span class="line">  background:pink;</span><br><span class="line">  flex:1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"><a href="#常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧" class="headerlink" title="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"></a>常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</h2><blockquote>
+<p>浏览器内核</p>
+</blockquote>
+<ul>
+<li>Trident: ie/360/搜狗浏览器</li>
+<li>Geoko: 火狐</li>
+<li>Presto: 欧朋opera</li>
+<li>Webkit: 谷歌/safari<blockquote>
+<p>浏览器的兼容</p>
+</blockquote>
+</li>
+<li>解决浏览器内外</li>
+</ul>
+<h2 id="html5标签有什么新特性"><a href="#html5标签有什么新特性" class="headerlink" title="html5标签有什么新特性"></a>html5标签有什么新特性</h2><ul>
+<li>添加了canvas画图</li>
+<li>新增语义化标签</li>
+<li>本地存储localStorage，sessionStorage，webSocket</li>
+<li>表单控件</li>
+</ul>
+<h2 id="如何处理html5标签的浏览器兼容问题？"><a href="#如何处理html5标签的浏览器兼容问题？" class="headerlink" title="如何处理html5标签的浏览器兼容问题？"></a>如何处理html5标签的浏览器兼容问题？</h2><blockquote>
+<p>header和footer标签在ie6.7中不支持</p>
+</blockquote>
+<ul>
+<li>ie支持document.createElement(),默认样式需要自己写</li>
+<li>html5shiv，这是一个google的一个html5.js文件，引入到head中，再在css中加入一段代码即可在ie中使用语义化标签</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2-盒子模型、优先级、伪类" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/" class="article-date">
+      <time datetime="2020-10-29T14:47:43.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/">2.盒子模型、优先级、伪类</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="行内元素有哪些？块级元素有哪些？"><a href="#行内元素有哪些？块级元素有哪些？" class="headerlink" title="行内元素有哪些？块级元素有哪些？"></a>行内元素有哪些？块级元素有哪些？</h2><ul>
+<li>行内：a b span input</li>
+<li>块级：div ul li p h1 dl 独占一行的</li>
+<li>空：br hr</li>
+</ul>
+<h2 id="css的盒子模型"><a href="#css的盒子模型" class="headerlink" title="css的盒子模型"></a>css的盒子模型</h2><ul>
+<li>margin &gt; border &gt; padding &gt; content</li>
+</ul>
+<h2 id="css选择符有哪些？哪些属性可以继承？优先级怎么算？"><a href="#css选择符有哪些？哪些属性可以继承？优先级怎么算？" class="headerlink" title="css选择符有哪些？哪些属性可以继承？优先级怎么算？"></a>css选择符有哪些？哪些属性可以继承？优先级怎么算？</h2><blockquote>
+<p>css选择符：</p>
+</blockquote>
+<ul>
+<li>id #</li>
+<li>class .</li>
+<li>标签 div、p</li>
+<li>相邻 ul+div</li>
+<li>子 ul&gt;li</li>
+<li>后代 ul li</li>
+<li>通配 *</li>
+<li>属性 a[href=’xxx’]</li>
+<li>伪类 a:after a:hover<blockquote>
+<p>css中哪些可以继承</p>
+</blockquote>
+</li>
+<li>color</li>
+<li>font-size<blockquote>
+<p>css选择器优先级问题（从高到低）</p>
+</blockquote>
+</li>
+<li>!important</li>
+<li>行内样式</li>
+<li>id</li>
+<li>class</li>
+<li>标签</li>
+<li>通配</li>
+<li>浏览器自定义或继承</li>
+</ul>
+<h2 id="css3新增伪类举例"><a href="#css3新增伪类举例" class="headerlink" title="css3新增伪类举例"></a>css3新增伪类举例</h2><ul>
+<li>:after 在元素内部最前添加内容</li>
+<li>:before 在元素内部最后添加内容</li>
+<li>:nth-child(n) 匹配父元素下指定子元素，在所有子元素中排序第n</li>
+<li>:nth-last-child(n) 匹配父元素下指定子元素，在所有子元素中排序第n，从后向前数</li>
+<li>:nth-child(odd)</li>
+<li>:nth-child(even)</li>
+<li>:nth-of-type(n) 匹配父元素下指定子元素，在同类子元素中排序第n</li>
+<li>:first-of-type  </li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-1-居中、双飞翼、清除浮动" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/10/29/1-%E5%B1%85%E4%B8%AD%E3%80%81%E5%8F%8C%E9%A3%9E%E7%BF%BC%E3%80%81%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" class="article-date">
+      <time datetime="2020-10-29T14:09:52.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/10/29/1-%E5%B1%85%E4%B8%AD%E3%80%81%E5%8F%8C%E9%A3%9E%E7%BF%BC%E3%80%81%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">1.居中、双飞翼、清除浮动</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一个200-200的div在不同分辨率屏幕上下左右居中，用css实现；"><a href="#一个200-200的div在不同分辨率屏幕上下左右居中，用css实现；" class="headerlink" title="一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；"></a>一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  background: red;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left: 50%;</span><br><span class="line">  top: 50%;</span><br><span class="line">  margin-left: -100px;</span><br><span class="line">  margin-top: -100px;</span><br><span class="line">&#125;</span><br><span class="line">.box &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  background: blue;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局"><a href="#写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局" class="headerlink" title="写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局"></a>写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;main&#39;&gt;</span><br><span class="line">  &lt;div class&#x3D;&#39;container&#39;&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;content&#39;&gt;中间&lt;&#x2F;div&gt;  </span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div class&#x3D;&#39;left&#39;&gt;左边&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div class&#x3D;&#39;right&#39;&gt;右边&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .main&gt;div&#123;</span><br><span class="line">    float: left;</span><br><span class="line">  &#125;</span><br><span class="line">  .container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">  .content&#123;</span><br><span class="line">    background: red;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">    margin-right: 200px;</span><br><span class="line">  &#125;</span><br><span class="line">  .left&#123;</span><br><span class="line">    background: pink;</span><br><span class="line">    width: 200px;</span><br><span class="line">    margin-left: -100%;</span><br><span class="line">  &#125;</span><br><span class="line">  .right&#123;</span><br><span class="line">    background: blue;</span><br><span class="line">    width: 200px;</span><br><span class="line">    margin-left: -200px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="清除浮动的几种方法"><a href="#清除浮动的几种方法" class="headerlink" title="清除浮动的几种方法"></a>清除浮动的几种方法</h2><blockquote>
+<p>当父元素包裹几个子元素时，如果子元素加了浮动，父元素的高度就发生了塌陷，此时需要清除浮动来解决</p>
+</blockquote>
+<ul>
+<li>在父元素里面添加一个盒子，让其clear:both; 缺点是多了一个div盒子</li>
+<li>给父元素加入overflow:hidden;</li>
+<li>最常用的给父元素加一个伪类：父元素：after{content:’’; clear:both; display:table;}</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-数据结构" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

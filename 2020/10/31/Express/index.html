@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Express | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="express简介 Express框架简介   是一个基于Node平台的Web应用开发框架，提供了一系列强大的特性，专门用来创建网站应用的,同时弥补了原生Node.js写起来复杂的缺点如：路由功能的实现，静态资源访问服务功能，接受POST请求参数的代码这都和网站应用本身的业务逻辑没有关系； 使用 npm install express 进行下载 框架为我们提供的特性： 提供了简洁的路由定义方式 对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Express">
+<meta property="og:url" content="http://example.com/2020/10/31/Express/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="express简介 Express框架简介   是一个基于Node平台的Web应用开发框架，提供了一系列强大的特性，专门用来创建网站应用的,同时弥补了原生Node.js写起来复杂的缺点如：路由功能的实现，静态资源访问服务功能，接受POST请求参数的代码这都和网站应用本身的业务逻辑没有关系； 使用 npm install express 进行下载 框架为我们提供的特性： 提供了简洁的路由定义方式 对">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-31T11:05:16.000Z">
+<meta property="article:modified_time" content="2020-10-31T11:06:27.085Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">玩转开发工具</a></li>
+                        
+                            <li><a  href="/categories/digital">玩转数码</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.csdn.net/baidu_21483933">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/maocg_web">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/eb37ef89c746/latest_articles">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">玩转开发工具</a></li>
+                
+                    <li><a href="/categories/digital">玩转数码</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Express" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/10/31/Express/" class="article-date">
+      <time datetime="2020-10-31T11:05:16.000Z" itemprop="datePublished">2020-10-31</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Express
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="express简介"><a href="#express简介" class="headerlink" title="express简介"></a>express简介</h2><blockquote>
+<p>Express框架简介</p>
+</blockquote>
+<ul>
+<li>是一个基于Node平台的Web应用开发框架，提供了一系列强大的特性，专门用来创建网站应用的,同时弥补了原生Node.js写起来复杂的缺点如：路由功能的实现，静态资源访问服务功能，接受POST请求参数的代码这都和网站应用本身的业务逻辑没有关系；</li>
+<li>使用 npm install express 进行下载</li>
+<li>框架为我们提供的特性：<ul>
+<li>提供了简洁的路由定义方式</li>
+<li>对获取HTTP请求参数进行了简化处理</li>
+<li>对模板引擎的支持度较高，方便渲染动态HTML页面</li>
+<li>提供了中间件(简单理解为对请求的拦截)机制，有效控制HTTP请求</li>
+<li>拥有大量的第三方中间件对功能进行了扩展</li>
+</ul>
+</li>
+</ul>
+<h2 id="express创建服务器的方法"><a href="#express创建服务器的方法" class="headerlink" title="express创建服务器的方法"></a>express创建服务器的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 在项目中引入express框架</span><br><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;创建网站服务器</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;&#39; , (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;send()方法</span><br><span class="line">    &#x2F;&#x2F; 1.send()方法内部会检测响应内容的类型</span><br><span class="line">    &#x2F;&#x2F; 2.send()方法会自动设置http状态码</span><br><span class="line">    &#x2F;&#x2F; 3.send()方法帮我们自动设置响应的内容类型和编码</span><br><span class="line">    res.send(&#39;Hello. Express&#39;);</span><br><span class="line">    &#x2F;&#x2F; 运行文件就会显示：网站服务器启动成功</span><br><span class="line">    &#x2F;&#x2F; 在网页中输入localhost:3000就可以显示Hello. Express</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;list&#39;, (req , res) &#x3D;&gt; &#123;</span><br><span class="line">    res.send(&#123;name: &#39;张三&#39;, age: 20&#125;);</span><br><span class="line">    &#x2F;&#x2F; 此时访问localhost:3000&#x2F;list,将服务器重新启动，刷新即可看到</span><br><span class="line">    &#x2F;&#x2F; 页面中显示一个JSON对象</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 监听端口</span><br><span class="line">app.listen(3000);</span><br><span class="line">console.log(&quot;网站服务器启动成功&quot;);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><blockquote>
+<ul>
+<li></li>
+</ul>
+</blockquote>
+<ul>
+<li>中间件其实就是Express框架提供的一堆方法，可以接受客户端发来的请求，可以对请求做出响应，专门是用来接受请求处理请求的</li>
+<li>对于一个请求，Express允许我们设立多个中间件，这些中间件按照设定的顺序依次对请求进行处理，可以把请求当作一条水流，而中间件就是这条水流中的一个个阀门，可以决定水流是否可以继续向下流动，也可以在当下阀门处对水流进行排污处理，处理完成后再继续向下流动。</li>
+<li>给我们带来的好处：可以将一个复杂的请求处理逻辑进行分开处理，也可以再请求到达指定路由前进行一些验证，如查看用户是否登录，登陆了才继续向下进行</li>
+<li>中间件由两部分构成，第一部分是由框架提供的，用于接受请求的方法第二部分由开发人员提供的，用于处理请求的方法，如：<ul>
+<li>app.get(‘请求路径’,’处理函数’);//接受并处理get请求</li>
+<li>app.post(‘请求路径’,’处理函数’);//接受并处理post请求</li>
+</ul>
+</li>
+<li>中间件处理请求时，默认情况是从上到下依次匹配中间件一旦匹配成功就终止匹配。如果多个中间件对同一个请求做处理时，可以调用next方法，意思就是匹配完我，还要接着匹配下一个中间件，哪个没写就到哪停止如：    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.get(&#39;&#x2F;request&#39;, (req, res, next) &#x3D;&gt; &#123;~~~next();&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>就表示继续向下走匹配下一个中间件；</li>
+<li>app.use()中间件用法：app.use()可以匹配所有的请求方式，例如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use((req, res, next) &#x3D;&gt; &#123;~~~&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>直接传入请求处理函数，代表接受所有的请求，注意：此代码要写在所有中间件前面。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(&#39;&#x2F;admin&#39;,(req, res, next) &#x3D;&gt; &#123;~~~&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>第一个参数也可以传入请求地址，代表无论什么请求方式，只要是这个请求地址就接受这个请求。</li>
+</ul>
+<h2 id="错误处理中间件"><a href="#错误处理中间件" class="headerlink" title="错误处理中间件"></a>错误处理中间件</h2><ul>
+<li>在程序执行的过程中，不可避免地会出现一些无法预料的错误，比如文件读取失败，数据库连接失败，错误处理中间件是一个集中处理错误的地方</li>
+<li>程序在运行过程中一旦出错是不能继续运行的，如果要让程序在出错之后还能继续运行，我们就需要在程序中捕获错误，加入错误处理。</li>
+<li>错误一般可以分为两种：一种是应用逻辑错误，也就是bug，这些错误是可以在开发阶段解决的，还有另外一种错误，比如读文件时文件不存在，这样程序也会报错，这种错误无法在开发阶段预料到，所以这种错误就需要被捕获，然后再对错误进行妥善处理，才不会导致程序崩溃</li>
+<li>如何定义错误处理中间件：错误处理中间件有四个形参，分别为：err错误对象，req请求对象，res响应对象，next方法,当出现了一个错误时，错误处理中间件就开始执行。</li>
+<li>错误处理中间件只能捕获到同步代码执行出错，如果异步代码在执行的过程中出现了错误，错误处理中间件是无法捕捉到的，这时我们需要手动触发错误处理中间件，如何触发呢？当异步API执行出错时，需要调用next方法，并且将错误信息传递到next方法中就可以了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;错误处理中间件</span><br><span class="line">app.use((err, req, res, next) &#x3D;&gt; &#123;</span><br><span class="line">    res.status(500).send(err.message);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="异步函数错误的捕获"><a href="#异步函数错误的捕获" class="headerlink" title="异步函数错误的捕获"></a>异步函数错误的捕获</h2><ul>
+<li>node.js中，错误信息都是通过回调函数获取的，支持promise对象的异步API发生错误可以通过catch方法捕获。但是，如何捕获异步函数执行时的错误呢？try catch 可以捕获同步代码错误，也可以捕获异步函数错误，但是不能捕获其他类型的异步错误，如：回调函数的/Promise对象的。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.get(&#39;&#x2F;index&#39;, async (req, res, next) &#x3D;&gt; &#123;</span><br><span class="line">    try&#123;</span><br><span class="line">        await readFile(&#39;.&#x2F;aaa.js&#39;);&#x2F;&#x2F;把可能会出错的代码写在这里</span><br><span class="line">    &#125;catch (ex) &#123;</span><br><span class="line">        next(ex);&#x2F;&#x2F;如果try中的代码发生了错误，则执行这里的代码</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="构建模块化路由的基础代码"><a href="#构建模块化路由的基础代码" class="headerlink" title="构建模块化路由的基础代码"></a>构建模块化路由的基础代码</h2><blockquote>
+<p>构建模块化路由</p>
+</blockquote>
+<ul>
+<li>虽然可以根据app.get()方法或者app.post()方法来创建路由，但是在一个真实的项目当中，路由的数量往往是很多的，express提供了模块化构建路由的方式，可以将同一类型的模块放在同一模块中进行管理；</li>
+<li>构建模块化路由的基础代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 创建路由对象</span><br><span class="line">const home &#x3D; express.Router();</span><br><span class="line">&#x2F;&#x2F; 为路由对象匹配请求路径</span><br><span class="line">app.use(&#39;&#x2F;home&#39;, home);</span><br><span class="line">&#x2F;&#x2F; 创建二级路由</span><br><span class="line">home.get(&#39;&#x2F;index&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    res.send(&#39;欢迎来到博客首页！&#39;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="构建模块化路由"><a href="#构建模块化路由" class="headerlink" title="构建模块化路由"></a>构建模块化路由</h2><ul>
+<li>首先在外部文件中创建好路由对象，而后在app.js文件中用require方法引入这些模块，然后对导入的路由进行路径匹配<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;导入两个路由模块</span><br><span class="line">const home &#x3D; require(&#39;.&#x2F;route&#x2F;home&#39;);&#x2F;&#x2F;.js后缀可以省略</span><br><span class="line">const admin &#x3D; require(&#39;.&#x2F;route&#x2F;admin&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;进行路径的匹配</span><br><span class="line">app.use(&#39;&#x2F;home&#39;, home);</span><br><span class="line">app.use(&#39;&#x2F;admin&#39;, admin);</span><br><span class="line"></span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="GET参数的获取"><a href="#GET参数的获取" class="headerlink" title="GET参数的获取"></a>GET参数的获取</h2><ul>
+<li>Express框架为请求对象req新增了query属性，query属性的值是对象类型对象中存储的就是客户端发来的GET请求参数，也就是说，通过使用Express框架，我们不再需要通过引用URL模块对请求地址进行解析从而获取GET请求参数。</li>
+<li><a target="_blank" rel="noopener" href="http://localhost:3000/index?name=zhangsan&amp;age=30&amp;gender=male">http://localhost:3000/index?name=zhangsan&amp;age=30&amp;gender=male</a></li>
+<li>输入上面的，浏览器就会得到下面的GET请求参数，一个对象{“name”:”zhangsan”,”age”:”30”,”gender”:”male”}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;引入模块</span><br><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">&#x2F;&#x2F;创建网站服务器</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">app.get(&#39;&#x2F;index&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;获取GET请求参数</span><br><span class="line">    res.send(req.query);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;监听</span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="POST参数的获取"><a href="#POST参数的获取" class="headerlink" title="POST参数的获取"></a>POST参数的获取</h2><ul>
+<li>Express中接受post参数需要借助第三方包 body-parser</li>
+<li>首先npm install body-parser 下载第三方模块</li>
+<li>执行以下代码</li>
+<li>然后重新创建一个post.html文件</li>
+<li>用浏览器执行该文件，输入用户名和密码</li>
+<li>回车，就可以直接获取到一个数组，其中包含了用户名和密码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;引入模块</span><br><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const bodyParser &#x3D; require(&#39;body-parser&#39;);</span><br><span class="line">&#x2F;&#x2F;创建网站服务器</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;拦截所有请求</span><br><span class="line">&#x2F;&#x2F;extended:false   方法内部使用querystring模块处理请求参数的格式</span><br><span class="line">&#x2F;&#x2F;extended:true  方法内部使用第三方模块qs处理请求参数的格式</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended:false&#125;))</span><br><span class="line"></span><br><span class="line">app.post(&#39;&#x2F;add&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    res.send(req.body);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;监听</span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="app-use-方法"><a href="#app-use-方法" class="headerlink" title="app.use()方法"></a>app.use()方法</h2><ul>
+<li>app.use()方法中是需要传递一个响应处理函数的。其实也可以传递一个对象的方法，只要这个方法的返回值是一个函数即可这种方法和直接传递一个函数作用相同，但是有好处。好处就是可以针对这个方法中传递的不同参数进行不同的函数调用我们使用if语句来进行判断，满足这个条件的参数就调用这个函数满足另一个条件的就调用另一个函数这样做就会更加灵活。</li>
+</ul>
+<h2 id="Express路由参数"><a href="#Express路由参数" class="headerlink" title="Express路由参数"></a>Express路由参数</h2><ul>
+<li>在Express框架中，传递和接受GET请求参数还有另外一种方式，路由参数这种方式可以让请求地址看起来非常的美观，也可以让路由代码更加易于阅读开发人员一眼就可以看出来请求当前路由需要传递哪些参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;引入模块</span><br><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">&#x2F;&#x2F;创建网站服务器</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;这里的:id表示的是一个占位符，当前这个路由需要接受一个id作为参数</span><br><span class="line">app.get(&#39;&#x2F;index&#x2F;:id&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;接受post请求参数</span><br><span class="line">    res.send(req.params);</span><br><span class="line">    &#x2F;&#x2F;在浏览器中输入localhost:3000&#x2F;index&#x2F;zhangteng</span><br><span class="line">    &#x2F;&#x2F;页面中就会返回一个对象&#123;&quot;id&quot;:&quot;zhangteng&quot;&#125;</span><br><span class="line">    &#x2F;&#x2F;如果要传递多个参数可以继续添加占位符：&#x2F;index&#x2F;:id&#x2F;:name&#x2F;:age</span><br><span class="line">    &#x2F;&#x2F;在浏览器中输入localhost:3000&#x2F;index&#x2F;zhangteng&#x2F;Ryan&#x2F;22</span><br><span class="line">    &#x2F;&#x2F;页面就会显示一个对象：&#123;&quot;id&quot;:&quot;zhangteng&quot;,&quot;name&quot;:&quot;Ryan&quot;,&quot;age&quot;:&quot;22&quot;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;监听</span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="静态资源访问功能"><a href="#静态资源访问功能" class="headerlink" title="静态资源访问功能"></a>静态资源访问功能</h2><ul>
+<li>在Express框架下，可以使用express.static可以方便地托管静态文件</li>
+<li>例如：img文件，CSS文件，JavaScript文件等<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const path &#x3D; require(&#39;path&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;拼接路径,__dirname获取当前文件夹所在的路径</span><br><span class="line">&#x2F;&#x2F;path.join(__dirname, &#39;public&#39;);</span><br><span class="line">&#x2F;&#x2F;将拼接的路径放在static这个方法里面</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;实现静态资源访问功能</span><br><span class="line">&#x2F;&#x2F;注意，也可以为这个路径指定一个虚拟路径</span><br><span class="line">&#x2F;&#x2F;如：app.use(&#39;&#x2F;static&#39;, express.static(path.join(__dirname, &#39;public&#39;)));</span><br><span class="line">&#x2F;&#x2F;这样访问路径就成了：locahost:3000&#x2F;static&#x2F;要打开的文件名即可&#x2F;或者继续向里打开</span><br><span class="line"></span><br><span class="line">app.use(express.static(path.join(__dirname, &#39;public&#39;)));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;运行当前代码</span><br><span class="line">&#x2F;&#x2F;在浏览器中直接输入localhost:3000&#x2F;要打开的文件名即可&#x2F;或者继续向里打开</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="Express中如何使用模板引擎"><a href="#Express中如何使用模板引擎" class="headerlink" title="Express中如何使用模板引擎"></a>Express中如何使用模板引擎</h2><ul>
+<li>模板引擎依然选择art-template,官方为了让这个引擎在框架中更好使用</li>
+<li>基于原有模板引擎又进行了一次封装:express-art-template</li>
+<li>使用如下命令进行下载：cnpm install art-template express-art-template<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const express &#x3D; require(&#39;express&#39;);</span><br><span class="line">const path &#x3D; require(&#39;path&#39;);</span><br><span class="line">const app &#x3D; express();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;1.告诉express框架使用什么模板引擎渲染什么后缀的模板文件</span><br><span class="line">&#x2F;&#x2F;参数一：模板的后缀；参数二:使用的模板引擎</span><br><span class="line">app.engine(&#39;art&#39;, require(&#39;express-art-template&#39;));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;2.告诉express框架模板存放的位置是什么,参数一：默认的；参数二：文件夹的名字</span><br><span class="line">app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;3.告诉express框架模板的默认后缀是什么</span><br><span class="line">app.set(&#39;view engine&#39;, &#39;art&#39;);</span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;index&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F;1.拼接了模板路径</span><br><span class="line">    &#x2F;&#x2F;2.拼接了模板后缀</span><br><span class="line">    &#x2F;&#x2F;3.哪一个模板和哪一个路径进行拼接</span><br><span class="line">    &#x2F;&#x2F;4.将拼接结果响应给客户端</span><br><span class="line">    res.render(&#39;index&#39;, &#123;</span><br><span class="line">        msg:&quot;message&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(&#39;&#x2F;list&#39;, (req, res) &#x3D;&gt; &#123;</span><br><span class="line">    res.render(&#39;list&#39;, &#123;</span><br><span class="line">        msg:&#39;list page&#39;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="app-local对象"><a href="#app-local对象" class="headerlink" title="app.local对象"></a>app.local对象</h2><ul>
+<li>在真实的项目开发中有这样一种场景：在不同页面中总会有一些公共区域</li>
+<li>这些公共区域要展示的数据都是一样的，在代码中要如何查询这个公共数据呢？</li>
+<li>最直接的方法就是在不同的页面路由当中都去查询这个相同的数据，然后再用render方法将数据填充到模板当中，这样会产生很多的冗余代码</li>
+<li>如何让查询公共数据的代码只写一次，要用的都可以使用呢？</li>
+<li>app下有一个locals对象，我们可以将公共数据作为locals对象下面的属性，在所有的模板中都是可以获取到的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.locals().users &#x3D; [&#123;</span><br><span class="line">    name:&#39;zhangsan&#39;,</span><br><span class="line">    age:20</span><br><span class="line">&#125;,&#123;</span><br><span class="line">    name:&#39;lisi&#39;,</span><br><span class="line">    age:30</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/10/31/Express/">Express</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2020年10月31日 - 19时05分</p>
+        <p><span>最后更新:</span>2020年10月31日 - 19时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/10/31/Express/" title="Express">http://example.com/2020/10/31/Express/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/10/31/Express/　　作者: " title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2020/10/31/git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          git
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2020/10/31/AJAX/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AJAX</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#express%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">express简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#express%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">express创建服务器的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">错误处理中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E9%94%99%E8%AF%AF%E7%9A%84%E6%8D%95%E8%8E%B7"><span class="toc-number">5.</span> <span class="toc-text">异步函数错误的捕获</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">构建模块化路由的基础代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1"><span class="toc-number">7.</span> <span class="toc-text">构建模块化路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET%E5%8F%82%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-number">8.</span> <span class="toc-text">GET参数的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST%E5%8F%82%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-number">9.</span> <span class="toc-text">POST参数的获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app-use-%E6%96%B9%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">app.use()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Express%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0"><span class="toc-number">11.</span> <span class="toc-text">Express路由参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E8%AE%BF%E9%97%AE%E5%8A%9F%E8%83%BD"><span class="toc-number">12.</span> <span class="toc-text">静态资源访问功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Express%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-number">13.</span> <span class="toc-text">Express中如何使用模板引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app-local%E5%AF%B9%E8%B1%A1"><span class="toc-number">14.</span> <span class="toc-text">app.local对象</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2020/10/31/git/" title="上一篇: git">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/10/31/AJAX/" title="下一篇: AJAX">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/Node-js/">Node.js</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/git/">git</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/Express/">Express</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/AJAX/">AJAX</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/MongoDB-md/">MongoDB.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/">19.cookie、localStorage、sessionStorage区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">18.let和const区别、数据类型隐式转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/">17.事件委托、js继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/">16.对象key的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/15-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E3%80%81%E5%88%A4%E6%96%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%AF%95/">15.创建对象、判断图片加载完毕</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/14-%E8%A7%A3%E6%9E%90url%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E5%AD%97%E6%95%B0/">14.解析url、字符串出现字数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/13-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%9D%91%E3%80%81%E7%BB%A7%E6%89%BF/">13.作用域坑、继承</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/12-new%E6%93%8D%E4%BD%9C%E7%AC%A6%E3%80%81%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E3%80%81%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/">12.new操作符、延迟加载、严格模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/11-dom%E6%93%8D%E4%BD%9C%E3%80%81%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E3%80%81%E5%86%92%E6%B3%A1/">11.dom操作、数组方法、冒泡</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/10-%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">10.作用域、数组方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/9-%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8%E3%80%810-1-0-2/">9.对象引用、0.1+0.2</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/31/8-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E3%80%81%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%AD%A3%E5%88%99/">8.数组去重、深拷贝、身份证正则</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/30/7-%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E3%80%81this%E6%8C%87%E5%90%91/">7.作用域、执行流程、this指向</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/30/6-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7/">6.数据类型、作用域、优先级</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/30/5-html%E6%A0%87%E7%AD%BE%E3%80%81DocType%E3%80%81iframe/">5.html标签、DocType、iframe</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/30/4-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/">4.移动端真机调试</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/">3.flex、浏览器内核、html5标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/">2.盒子模型、优先级、伪类</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/10/29/1-%E5%B1%85%E4%B8%AD%E3%80%81%E5%8F%8C%E9%A3%9E%E7%BF%BC%E3%80%81%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">1.居中、双飞翼、清除浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/19/hello-world/">Hello World</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
