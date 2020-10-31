@@ -7,17 +7,17 @@
   
   
   
-  <title>3.flex、浏览器内核、html5标签 | Hexo</title>
+  <title>18.let和const区别、数据类型隐式转换 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="flex布局的应用场景 在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;   用弹性盒实现圣杯布局123456789101112131415161718192021222324252627282930313233343536&lt;div class&#x3D;&#39;cont">
+  <meta name="description" content="ES6语法了解多少，const和let的区别 let   变量不能重复赋值； let只在其作用域中起作用，外部无法使用； 不存在变量提升； 不影响作用域链，内部没有找到还是会去外部作用域找； const   用来定义常量，如不能修改的量； 一定要赋初始值； 也是块级作用域中起作用； 对于const声明的数组或者对象进行修改是可以的，所以以后这两者多用const；  数据类型的隐式转换1234ale">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.flex、浏览器内核、html5标签">
-<meta property="og:url" content="http://example.com/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/index.html">
+<meta property="og:title" content="18.let和const区别、数据类型隐式转换">
+<meta property="og:url" content="http://example.com/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="flex布局的应用场景 在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;   用弹性盒实现圣杯布局123456789101112131415161718192021222324252627282930313233343536&lt;div class&#x3D;&#39;cont">
+<meta property="og:description" content="ES6语法了解多少，const和let的区别 let   变量不能重复赋值； let只在其作用域中起作用，外部无法使用； 不存在变量提升； 不影响作用域链，内部没有找到还是会去外部作用域找； const   用来定义常量，如不能修改的量； 一定要赋初始值； 也是块级作用域中起作用； 对于const声明的数组或者对象进行修改是可以的，所以以后这两者多用const；  数据类型的隐式转换1234ale">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-29T15:54:38.000Z">
-<meta property="article:modified_time" content="2020-10-29T15:55:05.713Z">
+<meta property="article:published_time" content="2020-10-31T07:40:40.000Z">
+<meta property="article:modified_time" content="2020-10-31T07:40:50.662Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -276,11 +276,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-3-flex、浏览器内核、html5标签" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-18-let和const区别、数据类型隐式转换" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/" class="article-date">
-      <time datetime="2020-10-29T15:54:38.000Z" itemprop="datePublished">2020-10-29</time>
+      <a  href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" class="article-date">
+      <time datetime="2020-10-31T07:40:40.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
 
     </div>
@@ -294,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      3.flex、浏览器内核、html5标签
+      18.let和const区别、数据类型隐式转换
     </h1>
   
 
@@ -312,39 +312,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="flex布局的应用场景"><a href="#flex布局的应用场景" class="headerlink" title="flex布局的应用场景"></a>flex布局的应用场景</h2><blockquote>
-<p>在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;</p>
+        <h2 id="ES6语法了解多少，const和let的区别"><a href="#ES6语法了解多少，const和let的区别" class="headerlink" title="ES6语法了解多少，const和let的区别"></a>ES6语法了解多少，const和let的区别</h2><blockquote>
+<p>let</p>
 </blockquote>
 <ul>
-<li>用弹性盒实现圣杯布局<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;container&#39;&gt;</span><br><span class="line">  &lt;header&gt;顶部&lt;&#x2F;header&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;left&#39;&gt;中间左边&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;content&#39;&gt;中间中间&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;right&#39;&gt;中间右边&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;section&gt;</span><br><span class="line">  &lt;footer&gt;底部&lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">  display:flex;</span><br><span class="line">  flex-direction:column;</span><br><span class="line">  height:100vh;</span><br><span class="line">&#125;</span><br><span class="line">header &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">  background:green;</span><br><span class="line">  flex:1;</span><br><span class="line">  display:flex;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">.left .right &#123;</span><br><span class="line">  background:yellow;</span><br><span class="line">  flex:0 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.content &#123;</span><br><span class="line">  background:pink;</span><br><span class="line">  flex:1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<li>变量不能重复赋值；</li>
+<li>let只在其作用域中起作用，外部无法使用；</li>
+<li>不存在变量提升；</li>
+<li>不影响作用域链，内部没有找到还是会去外部作用域找；<blockquote>
+<p>const</p>
+</blockquote>
+</li>
+<li>用来定义常量，如不能修改的量；</li>
+<li>一定要赋初始值；</li>
+<li>也是块级作用域中起作用；</li>
+<li>对于const声明的数组或者对象进行修改是可以的，所以以后这两者多用const；</li>
+</ul>
+<h2 id="数据类型的隐式转换"><a href="#数据类型的隐式转换" class="headerlink" title="数据类型的隐式转换"></a>数据类型的隐式转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(true+1); &#x2F;&#x2F; 2 true隐式转换为1</span><br><span class="line">alert(&#39;name&#39;+true); &#x2F;&#x2F; nametrue 字符串碰见别的数据类型都是转换为字符串类型</span><br><span class="line">alert(undefined+1); &#x2F;&#x2F; NaN</span><br><span class="line">alert(typeof null); &#x2F;&#x2F; Object</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h2 id="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"><a href="#常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧" class="headerlink" title="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"></a>常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</h2><blockquote>
-<p>浏览器内核</p>
-</blockquote>
-<ul>
-<li>Trident: ie/360/搜狗浏览器</li>
-<li>Geoko: 火狐</li>
-<li>Presto: 欧朋opera</li>
-<li>Webkit: 谷歌/safari<blockquote>
-<p>浏览器的兼容</p>
-</blockquote>
-</li>
-<li>解决浏览器内外</li>
-</ul>
-<h2 id="html5标签有什么新特性"><a href="#html5标签有什么新特性" class="headerlink" title="html5标签有什么新特性"></a>html5标签有什么新特性</h2><ul>
-<li>添加了canvas画图</li>
-<li>新增语义化标签</li>
-<li>本地存储localStorage，sessionStorage，webSocket</li>
-<li>表单控件</li>
-</ul>
-<h2 id="如何处理html5标签的浏览器兼容问题？"><a href="#如何处理html5标签的浏览器兼容问题？" class="headerlink" title="如何处理html5标签的浏览器兼容问题？"></a>如何处理html5标签的浏览器兼容问题？</h2><blockquote>
-<p>header和footer标签在ie6.7中不支持</p>
-</blockquote>
-<ul>
-<li>ie支持document.createElement(),默认样式需要自己写</li>
-<li>html5shiv，这是一个google的一个html5.js文件，引入到head中，再在css中加入一段代码即可在ie中使用语义化标签</li>
+<h2 id="Websocket和ajax的区别"><a href="#Websocket和ajax的区别" class="headerlink" title="Websocket和ajax的区别"></a>Websocket和ajax的区别</h2><ul>
+<li>ajax是什么时候要用就什么时候请求后端数据；</li>
+<li>Websocket是一直连接状态；</li>
 </ul>
 
       
@@ -354,13 +342,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/">3.flex、浏览器内核、html5标签</a></p>
+        <p><span>本文标题:</span><a  href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">18.let和const区别、数据类型隐式转换</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
-        <p><span>发布时间:</span>2020年10月29日 - 23时54分</p>
-        <p><span>最后更新:</span>2020年10月29日 - 23时55分</p>
+        <p><span>发布时间:</span>2020年10月31日 - 15时40分</p>
+        <p><span>最后更新:</span>2020年10月31日 - 15时40分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/" title="3.flex、浏览器内核、html5标签">http://example.com/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/10/29/3-flex%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E3%80%81html5%E6%A0%87%E7%AD%BE/　　作者: " title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" title="18.let和const区别、数据类型隐式转换">http://example.com/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/　　作者: " title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -371,18 +359,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/10/30/4-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          4.移动端真机调试
+          19.cookie、localStorage、sessionStorage区别
         
       </div>
     </a>
   
   
-    <a  href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2.盒子模型、优先级、伪类</div>
+    <a  href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">17.事件委托、js继承</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -394,7 +382,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#flex%E5%B8%83%E5%B1%80%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">flex布局的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%86%85%E6%A0%B8%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%EF%BC%9F%E5%8E%9F%E5%9B%A0%EF%BC%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9F%E5%B8%B8%E7%94%A8hack%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html5%E6%A0%87%E7%AD%BE%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">html5标签有什么新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86html5%E6%A0%87%E7%AD%BE%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">如何处理html5标签的浏览器兼容问题？</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E8%AF%AD%E6%B3%95%E4%BA%86%E8%A7%A3%E5%A4%9A%E5%B0%91%EF%BC%8Cconst%E5%92%8Clet%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">ES6语法了解多少，const和let的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.</span> <span class="toc-text">数据类型的隐式转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Websocket%E5%92%8Cajax%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">Websocket和ajax的区别</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -467,13 +455,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/10/30/4-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95/" title="上一篇: 4.移动端真机调试">
+            <a  href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" title="上一篇: 19.cookie、localStorage、sessionStorage区别">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/10/29/2-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E3%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E4%BC%AA%E7%B1%BB/" title="下一篇: 2.盒子模型、优先级、伪类">
+            <a  href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/" title="下一篇: 17.事件委托、js继承">
                 <i class="fa fa-angle-right"></i>
             </a>
         

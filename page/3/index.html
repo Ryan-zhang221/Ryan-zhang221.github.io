@@ -7,11 +7,11 @@
   
   
   
-  <title>Archives: 2020 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+<meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -33,6 +33,9 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
+    
+    
+  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -43,9 +46,9 @@
       var yiliaConfig = {
           fancybox: true,
           animate: true,
-          isHome: false,
+          isHome: true,
           isPost: false,
-          isArchive: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -274,315 +277,178 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a  href="/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+      <time datetime="2020-09-20T01:53:01.000Z" itemprop="datePublished">2020-09-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/09/20/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="需要的工具"><a href="#需要的工具" class="headerlink" title="需要的工具"></a>需要的工具</h2><pre><code>1.node环境
+2.npm
+3.window10 系统
+4.我们使用hexo来搭建博客</code></pre>
+<h2 id="安装node环境和npm包管理工具"><a href="#安装node环境和npm包管理工具" class="headerlink" title="安装node环境和npm包管理工具"></a>安装node环境和npm包管理工具</h2><pre><code>检查node环境 （node -v） 和npm包管理工具（npm -v），如果显示数字，格式为xx.xx.x就表示安装成功
+如果使用npm安装较慢，可以使用国内的淘宝镜像来下载，以后就用cnpm代替npm来下载了：
+(npm install -g cnpm --registry-https://registry.npm.taobao.org)</code></pre>
+<h2 id="使用cnpm安装全局的hexo框架"><a href="#使用cnpm安装全局的hexo框架" class="headerlink" title="使用cnpm安装全局的hexo框架"></a>使用cnpm安装全局的hexo框架</h2><pre><code>(cnpm install -g hexo-cli)
+使用(hexo -v)来验证安装是否成功</code></pre>
+<h2 id="在当前文件夹下新建一个blog文件夹"><a href="#在当前文件夹下新建一个blog文件夹" class="headerlink" title="在当前文件夹下新建一个blog文件夹"></a>在当前文件夹下新建一个blog文件夹</h2><pre><code>以后博客所有的文件都存放在blog文件夹里，如果出现了错误，就直接删除该文件夹即可
+使用(mkdir blog)即可新建blog文件夹
+使用(cd blog)进入该文件夹中</code></pre>
+<h2 id="使用hexo生成一个博客"><a href="#使用hexo生成一个博客" class="headerlink" title="使用hexo生成一个博客"></a>使用hexo生成一个博客</h2><pre><code>命令行中键入(hexo init)来初始化一个博客，这里有人反映会有点慢，我自己下载挺快的，不知道是不是安装了git的原因
+我们直接打开blog文件夹就可以看到自动生成的所有文件</code></pre>
+<h2 id="启动博客"><a href="#启动博客" class="headerlink" title="启动博客"></a>启动博客</h2><pre><code>命令行键入(hexo s)
+此时就会在命令行的4000端口启用
+在浏览器中输入：http://localhost:4000 即可看到创建好的个人博客</code></pre>
+<h2 id="写一篇文章"><a href="#写一篇文章" class="headerlink" title="写一篇文章"></a>写一篇文章</h2><pre><code>此时可以使用(hexo n &quot;文章名称&quot;)来写一篇新的文章
+也可以直接在 blog/source/_post 文件夹下新建一个.md文件，就是一篇新的文章，其中可以使用自己喜欢的编辑器写好，保存（这种方法简单）</code></pre>
+<h2 id="将文章推送到博客中去"><a href="#将文章推送到博客中去" class="headerlink" title="将文章推送到博客中去"></a>将文章推送到博客中去</h2><pre><code>使用(hexo c)清空一下
+使用(hexo g)生成一下
+重新启动博客(hexo s)
+这样就可以在 http://localhost:4000 中查看我们的新文章了</code></pre>
+<h2 id="将博客部署到远端-github-上去"><a href="#将博客部署到远端-github-上去" class="headerlink" title="将博客部署到远端(github)上去"></a>将博客部署到远端(github)上去</h2><pre><code>博客只能在本地使用当然不太好，所以我们需要将其部署到远端，我们可以通过域名来随时访问，这样博客的意义才体现出来
+首先，创建一个自己的github账号
+创建一个新仓库，仓库名必须是你的github用户名.github.io，如:ryan.github.io
+装一个git部署的插件，键入(cnpm install --save hexo-deployer-git)
+接下来设置_config.yml配置文件</code></pre>
+<h2 id="配置-config-yml"><a href="#配置-config-yml" class="headerlink" title="配置_config.yml"></a>配置_config.yml</h2><pre><code>键入(nodepad _config.yml)会弹出一个记事本，找到最后一行，在deploy后面添加
+    type: &#39;git&#39;
+    repo: https://github.com/你自己的仓库地址
+    branch: master
+保存即可</code></pre>
+<h2 id="部署到远端即可"><a href="#部署到远端即可" class="headerlink" title="部署到远端即可"></a>部署到远端即可</h2><pre><code>键入(hexo d)，可能要输入你的github账户名称和密码
+接下来，直接输入https://你的仓库名称即可 就可查看自己的博客</code></pre>
+<h2 id="增加或者修改文章"><a href="#增加或者修改文章" class="headerlink" title="增加或者修改文章"></a>增加或者修改文章</h2><pre><code>在blog/source/_posts/文件夹下找到要修改的文章进行修改或添加，修改完成后直接
+(hexo c)(hexo g)(hexo d) 三次操作即可推送到远端</code></pre>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><pre><code>如果现有主题不满意的话，可以在github上寻找好看的主题，克隆代码后放在blog/themes文件夹下
+然后配置_config.yml文件，找到theme：修改为新主题的名称后保存，然后
+(hexo c)(hexo g)(hexo d) 三次操作即可推送到远端</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a  href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-      <time datetime="2020-10-31T07:41:09.000Z" itemprop="datePublished">10-31</time>
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/09/19/hello-world/" class="article-date">
+      <time datetime="2020-09-19T08:35:26.829Z" itemprop="datePublished">2020-09-19</time>
 </a>
 
-        </div>
-         
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/">19.cookie、localStorage、sessionStorage区别</a>
+      <a  class="article-title" href="/2020/09/19/hello-world/">Hello World</a>
     </h1>
   
 
 
-        <div class="article-info info-on-archive">
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" class="archive-article-date">
-      <time datetime="2020-10-31T07:40:40.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">18.let和const区别、数据类型隐式转换</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-      <time datetime="2020-10-31T07:40:07.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/">17.事件委托、js继承</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/" class="archive-article-date">
-      <time datetime="2020-10-31T07:39:38.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/">16.对象key的坑</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/15-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E3%80%81%E5%88%A4%E6%96%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%AF%95/" class="archive-article-date">
-      <time datetime="2020-10-31T07:39:05.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/15-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E3%80%81%E5%88%A4%E6%96%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%AF%95/">15.创建对象、判断图片加载完毕</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/14-%E8%A7%A3%E6%9E%90url%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E5%AD%97%E6%95%B0/" class="archive-article-date">
-      <time datetime="2020-10-31T07:38:39.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/14-%E8%A7%A3%E6%9E%90url%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E5%AD%97%E6%95%B0/">14.解析url、字符串出现字数</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/13-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%9D%91%E3%80%81%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-      <time datetime="2020-10-31T07:38:04.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/13-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%9D%91%E3%80%81%E7%BB%A7%E6%89%BF/">13.作用域坑、继承</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/12-new%E6%93%8D%E4%BD%9C%E7%AC%A6%E3%80%81%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E3%80%81%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-      <time datetime="2020-10-31T07:37:25.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/12-new%E6%93%8D%E4%BD%9C%E7%AC%A6%E3%80%81%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E3%80%81%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/">12.new操作符、延迟加载、严格模式</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/11-dom%E6%93%8D%E4%BD%9C%E3%80%81%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E3%80%81%E5%86%92%E6%B3%A1/" class="archive-article-date">
-      <time datetime="2020-10-31T07:36:44.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/11-dom%E6%93%8D%E4%BD%9C%E3%80%81%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E3%80%81%E5%86%92%E6%B3%A1/">11.dom操作、数组方法、冒泡</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2020/10/31/10-%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
-      <time datetime="2020-10-31T07:36:08.000Z" itemprop="datePublished">10-31</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2020/10/31/10-%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%81%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/">10.作用域、数组方法</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </nav>
   
-
 
 </div>
       <footer id="footer">
@@ -676,18 +542,6 @@ ga('send', 'pageview');
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
