@@ -7,17 +7,17 @@
   
   
   
-  <title>19.cookie、localStorage、sessionStorage区别 | Hexo</title>
+  <title>项目中遇到的问题&#39; | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cookie、localStorage、sessionStorage区别 cookie可以设置失效时间，但没有自己的存取取的方法，需要时封装，每次请求时跟随请求发送,而localStorage和sessionStorage可以有自己存取的方法例如：setItem(),getItem(),removeItem(),clear() 如：localStorage.setItem(‘属性’，值)  coo">
+  <meta name="description" content="ios 键盘遮挡问题1234567891011scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话">
 <meta property="og:type" content="article">
-<meta property="og:title" content="19.cookie、localStorage、sessionStorage区别">
-<meta property="og:url" content="http://example.com/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="项目中遇到的问题&#39;">
+<meta property="og:url" content="http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="cookie、localStorage、sessionStorage区别 cookie可以设置失效时间，但没有自己的存取取的方法，需要时封装，每次请求时跟随请求发送,而localStorage和sessionStorage可以有自己存取的方法例如：setItem(),getItem(),removeItem(),clear() 如：localStorage.setItem(‘属性’，值)  coo">
+<meta property="og:description" content="ios 键盘遮挡问题1234567891011scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-31T07:41:09.000Z">
-<meta property="article:modified_time" content="2020-10-31T07:41:30.238Z">
+<meta property="article:published_time" content="2020-11-01T06:02:08.000Z">
+<meta property="article:modified_time" content="2020-11-01T06:02:27.833Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -276,11 +276,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-19-cookie、localStorage、sessionStorage区别" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-项目中遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" class="article-date">
-      <time datetime="2020-10-31T07:41:09.000Z" itemprop="datePublished">2020-10-31</time>
+      <a  href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+      <time datetime="2020-11-01T06:02:08.000Z" itemprop="datePublished">2020-11-01</time>
 </a>
 
     </div>
@@ -294,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      19.cookie、localStorage、sessionStorage区别
+      项目中遇到的问题&#39;
     </h1>
   
 
@@ -312,19 +312,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="cookie、localStorage、sessionStorage区别"><a href="#cookie、localStorage、sessionStorage区别" class="headerlink" title="cookie、localStorage、sessionStorage区别"></a>cookie、localStorage、sessionStorage区别</h2><ul>
-<li>cookie可以设置失效时间，但没有自己的存取取的方法，需要时封装，每次请求时跟随请求发送,而localStorage和sessionStorage可以有自己存取的方法例如：setItem(),getItem(),removeItem(),clear() 如：localStorage.setItem(‘属性’，值) </li>
-<li>cookie:由服务器生成，可设置失效时间，如果在浏览器端生成Cookie，默认关闭浏览器后失效，大小4k左右，与服务器通信每次都会携带在http请求头中，如果使用cookie保存过多数据会带来性能问题，要程序员自己封装，原生的接口不友好；</li>
-<li>localStorage：除非被清除，否则永久保存，大小一般为5M，仅在浏览器中保存，不参与服务器的通信，原生接口可以，也可以自己封装来对Object和Array有更好的支持；</li>
-<li>sessionStorage：与上面的区别就是仅在当前会话下有效，关闭页面或者浏览器后被清除；</li>
-</ul>
-<h2 id="将一个函数的arguments转化为真正的数组"><a href="#将一个函数的arguments转化为真正的数组" class="headerlink" title="将一个函数的arguments转化为真正的数组"></a>将一个函数的arguments转化为真正的数组</h2><ul>
-<li>arguments是一个对象，每个对象都有，可以使用</li>
-<li>ES6提供一个方法，Array.form(arguments)来完成这个操作；</li>
-</ul>
-<h2 id="原生js获取其指定元素下面的所有元素节点"><a href="#原生js获取其指定元素下面的所有元素节点" class="headerlink" title="原生js获取其指定元素下面的所有元素节点"></a>原生js获取其指定元素下面的所有元素节点</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var box &#x3D; document.getElementById(&#39;box&#39;);</span><br><span class="line">console.log(box.getElementByTagName(&#39;*&#39;));</span><br></pre></td></tr></table></figure>
+        <ol>
+<li><h2 id="ios-键盘遮挡问题"><a href="#ios-键盘遮挡问题" class="headerlink" title="ios 键盘遮挡问题"></a>ios 键盘遮挡问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素</span><br><span class="line">alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）</span><br><span class="line">alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话，调用元素的底部会与视口顶部平齐，不过顶部不一定平齐。（元素不会滚动）</span><br><span class="line">常见浏览器：IE、Chrome、Firefox、Safari和Opera。 都支持</span><br><span class="line">	let _this &#x3D; this</span><br><span class="line">	setTimeOut(function()&#123;  &#x2F;&#x2F;每100毫秒 滚动1次</span><br><span class="line">		_this.scrollIntoView(true)</span><br><span class="line">	&#125;,100)</span><br><span class="line">面试的时候 要说一下</span><br><span class="line">当input 得到焦点的时候 出发方法，方法作用 从新计算 元素到顶部的距离，元素向上移动的距离&#x3D;软键盘的高度</span><br><span class="line">ios手机型号太多，滚动数值需要多次获取</span><br></pre></td></tr></table></figure>
 
-<h2 id="给Array对象增加一个原型方法，功能是删除数组中重复的项"><a href="#给Array对象增加一个原型方法，功能是删除数组中重复的项" class="headerlink" title="给Array对象增加一个原型方法，功能是删除数组中重复的项"></a>给Array对象增加一个原型方法，功能是删除数组中重复的项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.unique &#x3D; function()&#123;</span><br><span class="line">   var brr &#x3D; [],</span><br><span class="line">      obj &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  for(var i&#x3D;0;i&lt;this.length;i++)&#123;</span><br><span class="line">    if(!obj[this[i]])&#123;</span><br><span class="line">      obj[this[i]] &#x3D; true;</span><br><span class="line">      brr.push(this[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return brr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr.unique());</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="IE9中，-请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题"><a href="#IE9中，-请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题" class="headerlink" title="IE9中， 请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题  *****"></a>IE9中， 请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题  *****</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&#123;name:&quot;张三张三张三张三张三张三&quot;,sex:&quot;man&quot;&#125;</span><br><span class="line">&#125; </span><br><span class="line">	&lt;select v-for&#x3D;&quot;&quot;&gt;</span><br><span class="line">		&lt;option&gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;option&gt;  &#x3D;&#x3D;&#x3D;&gt; 张</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line"> 解决： 重绘页面的select 输入框</span><br><span class="line"></span><br><span class="line">	forceRedrawSelect: function (useNextTick) &#123;</span><br><span class="line">	    useNextTick &#x3D; useNextTick !&#x3D;&#x3D; false;</span><br><span class="line">	    if (!browser.isIE)</span><br><span class="line">	        return;</span><br><span class="line">	    var _this &#x3D; this;</span><br><span class="line">	    var redraw &#x3D; function () &#123;</span><br><span class="line">	        var $select &#x3D; _this.$(&quot;select&quot;); &#x2F;&#x2F;选中select</span><br><span class="line">	        &#x2F;&#x2F;移除宽度的样式 </span><br><span class="line">	        $select.css(&#39;width&#39;, 0); </span><br><span class="line">	        $select.css(&#39;width&#39;, &#39;&#39;); </span><br><span class="line">	        &#x2F;&#x2F;单独设定样式</span><br><span class="line">			$select.css(&#39;width&#39;, &#39;300px&#39;);</span><br><span class="line">	    &#125;;</span><br><span class="line">	    if(useNextTick)</span><br><span class="line">	        this.$nextTick(redraw);</span><br><span class="line">	    else</span><br><span class="line">	        redraw()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue自定义指令判断时机问题"><a href="#vue自定义指令判断时机问题" class="headerlink" title="vue自定义指令判断时机问题"></a>vue自定义指令判断时机问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 错误写法 ，不能通过innerHTML获取</span><br><span class="line">&#39;null&#39; (el) &#123;</span><br><span class="line">    if (el.innerHTML &#x3D;&#x3D;&#x3D; &#39;&#39; || el.innerHTML &#x3D;&#x3D;&#x3D; &#39;--&#39;) &#123;</span><br><span class="line">      addClass(el, &#39;null-handler&#39;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      removeClass(el, &#39;null-handler&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#x2F;&#x2F; 正确写法 ，直接传值</span><br><span class="line">&#39;null&#39; (el, &#123; value, oldValue &#125;) &#123;</span><br><span class="line">  if (oldValue &#x3D;&#x3D;&#x3D; value) return &#x2F;&#x2F;终止程序</span><br><span class="line">	  if (value &#x3D;&#x3D;&#x3D; &#39;&#39; || value &#x3D;&#x3D;&#x3D; &#39;--&#39;) &#123;</span><br><span class="line">	    addClass(el, &#39;null-handler&#39;)</span><br><span class="line">	  &#125; else &#123;</span><br><span class="line">	    removeClass(el, &#39;null-handler&#39;)</span><br><span class="line">	  &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="mounted钩子函数中请求数据导致页面闪屏问题"><a href="#mounted钩子函数中请求数据导致页面闪屏问题" class="headerlink" title="mounted钩子函数中请求数据导致页面闪屏问题 ****"></a>mounted钩子函数中请求数据导致页面闪屏问题 ****</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">就是加载时机问题，放在created里会比mounted触发早一点，</span><br><span class="line">如果在页面挂载完之前请求完成的话就不会看到闪屏了</span><br></pre></td></tr></table></figure>
+
+<h2 id="用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性"><a href="#用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性" class="headerlink" title="用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性"></a>用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; es6写法</span><br><span class="line">let nodeList &#x3D; [...this.$el.querySelectorAll(&#39;[id^&#x3D;productItem]&#39;)] &#x2F;&#x2F;对象转化成集合</span><br><span class="line">&#x2F;&#x2F; es5写法</span><br><span class="line">let nodeList &#x3D; Array.prototype.slice.call(this.$el.querySelectorAll(&#39;[id^&#x3D;productItem]&#39;))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="数据接口：-postman可以收到数据，axios收不到-这是为什么？？？？"><a href="#数据接口：-postman可以收到数据，axios收不到-这是为什么？？？？" class="headerlink" title="数据接口： postman可以收到数据，axios收不到 这是为什么？？？？ **"></a>数据接口： postman可以收到数据，axios收不到 这是为什么？？？？ <strong>**</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.post 与 传参格式有关系：</span><br><span class="line">	params：&#123;参数名称:参数值&#125;</span><br><span class="line">2.postman</span><br><span class="line">	header : content-type: applicaton&#x2F;form-data</span><br><span class="line">  axios  默认 json提交，不是表单数据</span><br><span class="line">  	header : content-tye:application&#x2F;x-www-from-urlencode</span><br><span class="line">  	axios.defaults.header.post[&quot;content-type&quot;]  &#x3D; &quot;content-tye:application&#x2F;x-www-from-urlencode&quot;</span><br><span class="line">	axios.create(&#123;</span><br><span class="line">		baseUrl:</span><br><span class="line">		timeOut:</span><br><span class="line">		header:&#123;</span><br><span class="line">			&quot;content-type&quot;:&quot;content-tye:application&#x2F;x-www-from-urlencode&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">3.如果设置成功，还是接受不到---》后台问题</span><br></pre></td></tr></table></figure>
+
+<h2 id="兼容高版本的浏览器-，新api语法如何使用"><a href="#兼容高版本的浏览器-，新api语法如何使用" class="headerlink" title="兼容高版本的浏览器 ，新api语法如何使用"></a>兼容高版本的浏览器 ，新api语法如何使用</h2><p>在项目中，常遇到有些新增api不能正常转化js语法，<br>babel 转换新的 Javascript 句法，而不转换新的 Api ，比如es6中 Generator、Set、Symbol、Promise 等全局对象，为了解决这个问题，我们使用一种叫做 Polyfill（代码填充，也可译作兼容性补丁） 的技术</p>
+
       
     </div>
     
@@ -332,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/">19.cookie、localStorage、sessionStorage区别</a></p>
+        <p><span>本文标题:</span><a  href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">项目中遇到的问题&#39;</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
-        <p><span>发布时间:</span>2020年10月31日 - 15时41分</p>
-        <p><span>最后更新:</span>2020年10月31日 - 15时41分</p>
+        <p><span>发布时间:</span>2020年11月01日 - 14时02分</p>
+        <p><span>最后更新:</span>2020年11月01日 - 14时02分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" title="19.cookie、localStorage、sessionStorage区别">http://example.com/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/　　作者: " title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="项目中遇到的问题&#39;">http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/　　作者: " title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -349,18 +354,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/10/31/MongoDB-md/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          MongoDB.md
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">18.let和const区别、数据类型隐式转换</div>
+    <a  href="/2020/10/31/Node-js/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Node.js</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -372,7 +368,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">cookie、localStorage、sessionStorage区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84arguments%E8%BD%AC%E5%8C%96%E4%B8%BA%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%95%B0%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">将一个函数的arguments转化为真正的数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9Fjs%E8%8E%B7%E5%8F%96%E5%85%B6%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">原生js获取其指定元素下面的所有元素节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99Array%E5%AF%B9%E8%B1%A1%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8A%9F%E8%83%BD%E6%98%AF%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E9%A1%B9"><span class="toc-number">4.</span> <span class="toc-text">给Array对象增加一个原型方法，功能是删除数组中重复的项</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">ios 键盘遮挡问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IE9%E4%B8%AD%EF%BC%8C-%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%B9%B6%E7%94%A8v-for%E6%B8%B2%E6%9F%93option%E6%A0%87%E7%AD%BE%E5%87%BA%E7%8E%B0%E5%8F%AA%E6%98%BE%E7%A4%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AD%97%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">IE9中， 请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题  *****</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E5%88%A4%E6%96%AD%E6%97%B6%E6%9C%BA%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">vue自定义指令判断时机问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mounted%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E4%B8%AD%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%87%B4%E9%A1%B5%E9%9D%A2%E9%97%AA%E5%B1%8F%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">mounted钩子函数中请求数据导致页面闪屏问题 ****</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8forEach%E9%81%8D%E5%8E%86NodeList%EF%BC%8Cie%E6%8A%A5%E9%94%99%E2%80%9Cnodelist%E4%B8%BA%E5%AF%B9%E8%B1%A1%EF%BC%8C%E4%B8%8D%E6%94%AF%E6%8C%81forEach%E5%B1%9E%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text">用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3%EF%BC%9A-postman%E5%8F%AF%E4%BB%A5%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%EF%BC%8Caxios%E6%94%B6%E4%B8%8D%E5%88%B0-%E8%BF%99%E6%98%AF%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%9F%EF%BC%9F%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">数据接口： postman可以收到数据，axios收不到 这是为什么？？？？ **</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8-%EF%BC%8C%E6%96%B0api%E8%AF%AD%E6%B3%95%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">兼容高版本的浏览器 ，新api语法如何使用</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -445,13 +441,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/10/31/MongoDB-md/" title="上一篇: MongoDB.md">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" title="下一篇: 18.let和const区别、数据类型隐式转换">
+            <a  href="/2020/10/31/Node-js/" title="下一篇: Node.js">
                 <i class="fa fa-angle-right"></i>
             </a>
         
