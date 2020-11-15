@@ -2,10 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
   
-  
-  
+
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,295 +15,77 @@
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="icon" href="/img/favicon.png">
+    <link rel="icon" href="/favicon.png">
   
   
-  
-<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   
 <link rel="stylesheet" href="/css/style.css">
 
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-    
-    
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          fancybox: true,
-          animate: true,
-          isHome: true,
-          isPost: false,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
 <meta name="generator" content="Hexo 5.2.0"></head>
+
 <body>
   <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/avatar.png" class="js-avatar">
-            
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/"></a></h1>
-        </hgroup>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
-            </form>
-            <div id="local-search-result"></div>
-        
-        
-            <script type="text/javascript">
-                (function() {
-                    'use strict';
-                    function getMatchData(keyword, data) {
-                        var matchData = [];
-                        for(var i =0;i<data.length;i++){
-                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
-                                matchData.push(data[i])
-                        }
-                        return matchData;
-                    }
-                    var $input = $('#local-search-input');
-                    var $resultContent = $('#local-search-result');
-                    $input.keyup(function(){
-                        $.ajax({
-                            url: '/search.json',
-                            dataType: "json",
-                            success: function( json ) {
-                                var str='<ul class=\"search-result-list\">';                
-                                var keyword = $input.val().trim().toLowerCase();
-                                $resultContent.innerHTML = "";
-                                if ($input.val().trim().length <= 0) {
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                }
-                                var results = getMatchData(keyword, json);
-                                if(results.length === 0){
-                                    $resultContent.empty();
-                                    $('#switch-area').show();
-                                    return;
-                                } 
-                                for(var i =0; i<results.length; i++){
-                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
-                                }
-                                str += "</ul>";
-                                $resultContent.empty();
-                                $resultContent.append(str);
-                                $('#switch-area').hide();
-                            }
-                        });
-                    });
-                })();
-            </script>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a  href="/archives/">所有文章</a></li>
-                        
-                            <li><a  href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">玩转开发工具</a></li>
-                        
-                            <li><a  href="/categories/digital">玩转数码</a></li>
-                        
-                            <li><a  href="/categories/algorithm">算法学习</a></li>
-                        
-                            <li><a  href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
-                            
-                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
-                            
-                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        
-                    </div>
-                </section>
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.csdn.net/baidu_21483933">csdn</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/maocg_web">segmentfault</a>
-                    
-                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/eb37ef89c746/latest_articles">简书</a>
-                    
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>
-</div>
-
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/avatar.png" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
-            </hgroup>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">玩转开发工具</a></li>
-                
-                    <li><a href="/categories/digital">玩转数码</a></li>
-                
-                    <li><a href="/categories/algorithm">算法学习</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
-                    
-                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                    
-                </div>
-            </nav>
-        </header>
     </div>
-</nav>
-      <div class="body-wrap">
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
   
     <article id="post-项目中遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
-      <time datetime="2020-11-01T06:02:08.000Z" itemprop="datePublished">2020-11-01</time>
+  <div class="article-meta">
+    <a href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-11-01T06:02:08.000Z" itemprop="datePublished">2020-11-01</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">项目中遇到的问题&#39;</a>
+      <a class="article-title" href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">项目中遇到的问题&#39;</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <ol>
 <li><h2 id="ios-键盘遮挡问题"><a href="#ios-键盘遮挡问题" class="headerlink" title="ios 键盘遮挡问题"></a>ios 键盘遮挡问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素</span><br><span class="line">alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）</span><br><span class="line">alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话，调用元素的底部会与视口顶部平齐，不过顶部不一定平齐。（元素不会滚动）</span><br><span class="line">常见浏览器：IE、Chrome、Firefox、Safari和Opera。 都支持</span><br><span class="line">	let _this &#x3D; this</span><br><span class="line">	setTimeOut(function()&#123;  &#x2F;&#x2F;每100毫秒 滚动1次</span><br><span class="line">		_this.scrollIntoView(true)</span><br><span class="line">	&#125;,100)</span><br><span class="line">面试的时候 要说一下</span><br><span class="line">当input 得到焦点的时候 出发方法，方法作用 从新计算 元素到顶部的距离，元素向上移动的距离&#x3D;软键盘的高度</span><br><span class="line">ios手机型号太多，滚动数值需要多次获取</span><br></pre></td></tr></table></figure>
 
@@ -326,60 +106,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckgypjuob0000rgu31i3b9l9v" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-Node-js" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/Node-js/" class="article-date">
-      <time datetime="2020-10-31T11:05:42.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/Node-js/" class="article-date">
+  <time datetime="2020-10-31T11:05:42.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/Node-js/">Node.js</a>
+      <a class="article-title" href="/2020/10/31/Node-js/">Node.js</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="必备知识"><a href="#必备知识" class="headerlink" title="必备知识"></a>必备知识</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">1.命令行窗口&#x2F;CMD窗口&#x2F;终端&#x2F;shell</span><br><span class="line">        &gt; 常用的指令：</span><br><span class="line">                   dir - 列出当前文件夹的所有文件</span><br><span class="line">                   cd 目录名 - 进入到指定的目录 tab键位可自动填充</span><br><span class="line">                   md 目录名 - 创建一个文件夹</span><br><span class="line">                   rd 目录名 - 删除一个文件夹</span><br><span class="line">        &gt; 目录</span><br><span class="line">             每一个目录中都有下面的两个东西</span><br><span class="line">             .  表示当前目录</span><br><span class="line">             ..  表示上一级目录</span><br><span class="line">        &gt; 环境变量(window系统中的变量)</span><br><span class="line"></span><br><span class="line">            &gt; 一般只是修改用户变量，不改系统变量；</span><br><span class="line"></span><br><span class="line">            &gt; path，后面跟了一堆的路径，我们如果将一个文件的路径放置在这些路径后面，</span><br><span class="line">               用;隔开，那么我们在任何文件中都可以访问这个路径的文件；</span><br><span class="line"></span><br><span class="line">            &gt; 当我们在命令行窗口打开一个文件，或者调用一个程序时，系统会首先在当前</span><br><span class="line">               目录下寻找文件或者程序，如果找到了则直接打开；如果没有找到则会依次到</span><br><span class="line">               环境变量path后面的路径中寻找，直到找到为止，没找到则报错；</span><br><span class="line"></span><br><span class="line">            &gt; 所以我们可以将一些我们经常访问的程序和文件路径添加到path，这样我们就可</span><br><span class="line">              以在任意位置来访问这些文件和程序；</span><br><span class="line"> --&gt;</span><br><span class="line"></span><br><span class="line"> &lt;!-- </span><br><span class="line">    2，进程和线程</span><br><span class="line"></span><br><span class="line">         &gt; 进程(提供环境的)</span><br><span class="line"></span><br><span class="line">              -进程负责为程序的运行提供必备的环境；</span><br><span class="line">              -进程就相当于工厂中的车间；</span><br><span class="line"></span><br><span class="line">         &gt; 线程(干活的)</span><br><span class="line"></span><br><span class="line">              -线程是计算机中最小的计量单位，线程负责执行进程中的程序；</span><br><span class="line">              -线程相当于工厂中的工人；</span><br><span class="line"></span><br><span class="line">         &gt; 单线程</span><br><span class="line">              </span><br><span class="line">              -可以理解为单个人干一项工作；</span><br><span class="line">              -JS是单线程的，因为有可能出现混乱；</span><br><span class="line"></span><br><span class="line">         &gt; 多线程</span><br><span class="line"></span><br><span class="line">              -可以理解为多个人干同一项工作；</span><br><span class="line">              -主流的语言都是多线程的；</span><br></pre></td></tr></table></figure>
 
 <h2 id="Node基础"><a href="#Node基础" class="headerlink" title="Node基础"></a>Node基础</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1.Node.js简介</span><br><span class="line">        &gt; Node.js是一个能够在服务端运行JS的开放源代码、跨平台的JS运行环境；</span><br><span class="line">        &gt; 非常重要、非常厉害的一点就是把战场从浏览器转移到了服务器端，可以让我们直接和windows系统进行交互</span><br><span class="line">          这就和C、C++、Java等一样了，让前端变得被人重视了起来；</span><br><span class="line">        &gt; 常用6.0版本；</span><br><span class="line">      </span><br><span class="line">    2.Node</span><br><span class="line">        &gt; Node是对ES标准的一个实现，Node也是一个JS引擎；</span><br><span class="line">        &gt; 通过Node可以使JS代码在服务器端运行；</span><br><span class="line">        &gt; Node仅仅对ES标准进行了实现，所以Node中不包含BOM和DOM；</span><br><span class="line">        &gt; Node中可以使用所有的内建对象：</span><br><span class="line">              String Number Boolean Math Date RegExp Function Object Array</span><br><span class="line">              但是BOM和DOM都不可使用</span><br><span class="line">              可以使用console,也可以使用定时器(setTimeout() setInterval());</span><br><span class="line">        &gt; Node可以在后台来编写服务器，Node编写的都是单线程的服务器</span><br><span class="line">        &gt; 传统的服务器都是多线程的；</span><br><span class="line">        &gt; Node的服务器是单线程的，但是在后台有一个I&#x2F;O(指的是服务器与数据库之间的数据交换input&#x2F;output)线程池;</span><br><span class="line">        &gt; </span><br></pre></td></tr></table></figure>
@@ -399,60 +158,39 @@
 <h2 id="fs其他方法"><a href="#fs其他方法" class="headerlink" title="fs其他方法"></a>fs其他方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- </span><br><span class="line">    fs其他方法</span><br><span class="line">        &gt; 验证路径是否存在</span><br><span class="line">           fs.existsSync(path);</span><br><span class="line">        &gt; 获取文件信息</span><br><span class="line">           fs.stat(path, callback)</span><br><span class="line">              它会返回一个对象，这个对象中保存了当前对象状态的相关信息</span><br><span class="line">              callback中有两个参数，err和stat；</span><br><span class="line">           fs.statSync(path)</span><br><span class="line">        &gt; 删除文件</span><br><span class="line">           fs.unlink(path, callback)</span><br><span class="line">           fs.unlinkSy(path)</span><br><span class="line">        &gt; 列出文件(读取一个目录的目录结构)</span><br><span class="line">           fs.readdir(path[, options], callback)</span><br><span class="line">               callback中两个参数，err和files，files是一个字符串数组，包含所有文件</span><br><span class="line">           fs.readdirSync(path[, options])</span><br><span class="line">        &gt; 截断文件(将文件修改为指定的大小)</span><br><span class="line">           fs.truncate(path, len, callback)</span><br><span class="line">           fs.truncateSync(path, len)</span><br><span class="line">        &gt; 建立目录(创建一个文件夹)</span><br><span class="line">           fs.mkdir(path[, mode], callback)</span><br><span class="line">           fs.mkdirSync(path[, mode])</span><br><span class="line">        &gt; 删除目录</span><br><span class="line">           fs.rmdir(path,callback)</span><br><span class="line">           fs.rmdirSync(path)</span><br><span class="line">        &gt; 重命名文件或目录(可以实现剪切的功能)</span><br><span class="line">           fs.rename(oldpath, newPath, callback)</span><br><span class="line">           fs.renameSync(oldPath, newPath)</span><br><span class="line">        &gt; 监视文件的更改</span><br><span class="line">           fs.watchFile(filename[, options], listener)</span><br><span class="line">                 filename  要监视的文件的名字</span><br><span class="line">                 options  配置选项，传一个对象，对象里添加属性，如：&#123;interval:1000&#125;可以设置检查的时间；</span><br><span class="line">                 listener  回调函数，当文件发生变化时执行</span><br><span class="line">                     这个回调函数中有两个参数</span><br><span class="line">                           curr  当前文件的状态</span><br><span class="line">                           prev  修改前文件的状态</span><br><span class="line">                           这两个对象都是stats对象，可以使用curr.size就可以得到文件大小的变化</span><br><span class="line"></span><br><span class="line"> --&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/Node-js/" data-id="ckgxl08s400031ou3h0dobq85" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/git/" class="article-date">
-      <time datetime="2020-10-31T11:05:27.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/git/" class="article-date">
+  <time datetime="2020-10-31T11:05:27.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/git/">git</a>
+      <a class="article-title" href="/2020/10/31/git/">git</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <blockquote>
 <p>git是为了管理linux系统下代码的工具，后来延申出来到各个系统都可使用</p>
 </blockquote>
@@ -569,60 +307,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/git/" data-id="ckgxl08ru00021ou322ah4cqh" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-Express" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/Express/" class="article-date">
-      <time datetime="2020-10-31T11:05:16.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/Express/" class="article-date">
+  <time datetime="2020-10-31T11:05:16.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/Express/">Express</a>
+      <a class="article-title" href="/2020/10/31/Express/">Express</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="express简介"><a href="#express简介" class="headerlink" title="express简介"></a>express简介</h2><blockquote>
 <p>Express框架简介</p>
 </blockquote>
@@ -746,60 +463,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/Express/" data-id="ckgxl08rs00011ou3bcgj1gxd" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/AJAX/" class="article-date">
-      <time datetime="2020-10-31T11:05:02.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/AJAX/" class="article-date">
+  <time datetime="2020-10-31T11:05:02.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/AJAX/">AJAX</a>
+      <a class="article-title" href="/2020/10/31/AJAX/">AJAX</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="AJAX-简介"><a href="#AJAX-简介" class="headerlink" title="AJAX 简介"></a>AJAX 简介</h2><ul>
 <li>全称：Asyncchronous Javascript And XML,就是异步的JS和XML</li>
 <li>过AJAX可以在浏览器中向服务器发送异步请求，最大的优势：无刷新获取数据。</li>
@@ -900,60 +596,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/AJAX/" data-id="ckgxl08rk00001ou36aea64mt" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-MongoDB-md" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/MongoDB-md/" class="article-date">
-      <time datetime="2020-10-31T10:43:41.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/MongoDB-md/" class="article-date">
+  <time datetime="2020-10-31T10:43:41.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/MongoDB-md/">MongoDB.md</a>
+      <a class="article-title" href="/2020/10/31/MongoDB-md/">MongoDB.md</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="数据库知识"><a href="#数据库知识" class="headerlink" title="数据库知识"></a>数据库知识</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">数据库（database）</span><br><span class="line">      &gt; 数据库是按照数据结构来组织，存储，和管理数据的仓库</span><br><span class="line">      &gt; 我们的程序都是在内存中运行，一旦程序运行结束或者计算机断电，</span><br><span class="line">        程序中的数据都会都会消失</span><br><span class="line">      &gt; 所以我们就需要将一些程序运行的数据持久化到硬盘中去，确保数</span><br><span class="line">        据的安全性，而数据库就是数据持久化的最佳选择</span><br><span class="line">      &gt; 说白了，数据库就是存储数据的仓库</span><br><span class="line"></span><br><span class="line">    数据库的分类</span><br><span class="line">      &gt; 关系型数据库(RDBMS)</span><br><span class="line">        &gt; 如：MySQL Oracle DB2 SQL Server,关系数据库中全都是表</span><br><span class="line">      &gt; 非关系型数据库(NoSQL)-not only SQL</span><br><span class="line">        &gt; MongoDB、Redis,是一种键值对数据库，文档数据库</span><br></pre></td></tr></table></figure>
 
 
@@ -980,60 +655,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/MongoDB-md/" data-id="ckgxk650b0000ecu3cp7g8s0m" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-19-cookie、localStorage、sessionStorage区别" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" class="article-date">
-      <time datetime="2020-10-31T07:41:09.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time datetime="2020-10-31T07:41:09.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/">19.cookie、localStorage、sessionStorage区别</a>
+      <a class="article-title" href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/">19.cookie、localStorage、sessionStorage区别</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="cookie、localStorage、sessionStorage区别"><a href="#cookie、localStorage、sessionStorage区别" class="headerlink" title="cookie、localStorage、sessionStorage区别"></a>cookie、localStorage、sessionStorage区别</h2><ul>
 <li>cookie可以设置失效时间，但没有自己的存取取的方法，需要时封装，每次请求时跟随请求发送,而localStorage和sessionStorage可以有自己存取的方法例如：setItem(),getItem(),removeItem(),clear() 如：localStorage.setItem(‘属性’，值) </li>
 <li>cookie:由服务器生成，可设置失效时间，如果在浏览器端生成Cookie，默认关闭浏览器后失效，大小4k左右，与服务器通信每次都会携带在http请求头中，如果使用cookie保存过多数据会带来性能问题，要程序员自己封装，原生的接口不友好；</li>
@@ -1049,60 +703,39 @@
 <h2 id="给Array对象增加一个原型方法，功能是删除数组中重复的项"><a href="#给Array对象增加一个原型方法，功能是删除数组中重复的项" class="headerlink" title="给Array对象增加一个原型方法，功能是删除数组中重复的项"></a>给Array对象增加一个原型方法，功能是删除数组中重复的项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.unique &#x3D; function()&#123;</span><br><span class="line">   var brr &#x3D; [],</span><br><span class="line">      obj &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  for(var i&#x3D;0;i&lt;this.length;i++)&#123;</span><br><span class="line">    if(!obj[this[i]])&#123;</span><br><span class="line">      obj[this[i]] &#x3D; true;</span><br><span class="line">      brr.push(this[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return brr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr.unique());</span><br></pre></td></tr></table></figure>
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" data-id="ckgxdo99g00092gu36mbf138q" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-18-let和const区别、数据类型隐式转换" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" class="article-date">
-      <time datetime="2020-10-31T07:40:40.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" class="article-date">
+  <time datetime="2020-10-31T07:40:40.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">18.let和const区别、数据类型隐式转换</a>
+      <a class="article-title" href="/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/">18.let和const区别、数据类型隐式转换</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="ES6语法了解多少，const和let的区别"><a href="#ES6语法了解多少，const和let的区别" class="headerlink" title="ES6语法了解多少，const和let的区别"></a>ES6语法了解多少，const和let的区别</h2><blockquote>
 <p>let</p>
 </blockquote>
@@ -1128,60 +761,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/18-let%E5%92%8Cconst%E5%8C%BA%E5%88%AB%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/" data-id="ckgxdo99f00082gu32y6u3hpg" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-17-事件委托、js继承" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/" class="article-date">
-      <time datetime="2020-10-31T07:40:07.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/" class="article-date">
+  <time datetime="2020-10-31T07:40:07.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/">17.事件委托、js继承</a>
+      <a class="article-title" href="/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/">17.事件委托、js继承</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="请解释什么是事件代理，也就是事件委托"><a href="#请解释什么是事件代理，也就是事件委托" class="headerlink" title="请解释什么是事件代理，也就是事件委托"></a>请解释什么是事件代理，也就是事件委托</h2><ul>
 <li>比如我们要给所有的ul下面的li添加事件，本身是给li添加事件，现在可以委托到ul上</li>
 <li>即使后天加进来也有效</li>
@@ -1196,60 +808,39 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/17-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E3%80%81js%E7%BB%A7%E6%89%BF/" data-id="ckgxdo99e00072gu33vh1e5zz" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
   
     <article id="post-16-对象key的坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/" class="article-date">
-      <time datetime="2020-10-31T07:39:38.000Z" itemprop="datePublished">2020-10-31</time>
+  <div class="article-meta">
+    <a href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/" class="article-date">
+  <time datetime="2020-10-31T07:39:38.000Z" itemprop="datePublished">2020-10-31</time>
 </a>
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+  </div>
+  <div class="article-inner">
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/">16.对象key的坑</a>
+      <a class="article-title" href="/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/">16.对象key的坑</a>
     </h1>
   
 
-
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-          
         <h2 id="key的坑"><a href="#key的坑" class="headerlink" title="key的坑"></a>key的坑</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#123;&#125;;</span><br><span class="line">var b &#x3D; &#123;</span><br><span class="line">  key:&#39;a&#39;</span><br><span class="line">&#125;</span><br><span class="line">var c &#x3D; &#123;</span><br><span class="line">  key:&#39;c&#39;</span><br><span class="line">&#125;</span><br><span class="line">a[b] &#x3D; &#39;123&#39;;</span><br><span class="line">a[c] &#x3D; &#39;456&#39;;</span><br><span class="line">console.log(a[b]); &#x2F;&#x2F; 456</span><br></pre></td></tr></table></figure>
 <ul>
 <li>这里的b和c都是对象，作为属性传递给a之后由于他们两个都有key属性，所以后者就会覆盖前者<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3]</span><br><span class="line">var brr &#x3D; [1,2,3]</span><br><span class="line">var obj &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line">obj[arr] &#x3D; &#39;数组arr&#39;</span><br><span class="line">obj[brr] &#x3D; &#39;数组brr&#39;</span><br><span class="line"></span><br><span class="line">console.log(obj); &#x2F;&#x2F; &#123;1,2,3:&quot;数组brr&quot;&#125;</span><br></pre></td></tr></table></figure></li>
@@ -1259,157 +850,114 @@
 
       
     </div>
-    
-    <div class="article-info article-info-index">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/31/16-%E5%AF%B9%E8%B1%A1key%E7%9A%84%E5%9D%91/" data-id="ckgxdo99d00062gu3dyw8cazf" class="article-share-link">Share</a>
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
+    </footer>
   </div>
   
 </article>
 
 
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2020 John Doe
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >极客到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
-</footer>
 
-    </div>
+  <nav id="page-nav">
     
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li></ul>
+    </div>
+  </div>
 
 
-<script src="/js/main.js"></script>
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">项目中遇到的问题&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/31/Node-js/">Node.js</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/31/git/">git</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/31/Express/">Express</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/31/AJAX/">AJAX</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 1;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'xxxxx', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
-	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
+
+<script src="/js/script.js"></script>
 
 
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
 
 
   </div>
