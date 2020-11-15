@@ -1,31 +1,487 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-block content
-  article#post(class="")
-    if top_img === false
-      include includes/header/post-info.pug
+<link rel="stylesheet" href="/css/main.css">
 
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache:theme.fragment_cache})
+  <meta name="description" content="git是为了管理linux系统下代码的工具，后来延申出来到各个系统都可使用  Git与svn对比 svn   这是一个集中式的代码管理工具，首先需要一台svn服务器，每一个开发电脑上需要装上一个svn的客户端，可以直接将代码提交到svn服务器上，想下载代码，可以直接从svn服务器上下载到本地，代码由svn服务器统一管理   Git   分布式的版本控制系统，没有中央服务器，每个人的电脑上都有一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http://example.com/2020/10/31/git/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="git是为了管理linux系统下代码的工具，后来延申出来到各个系统都可使用  Git与svn对比 svn   这是一个集中式的代码管理工具，首先需要一台svn服务器，每一个开发电脑上需要装上一个svn的客户端，可以直接将代码提交到svn服务器上，想下载代码，可以直接从svn服务器上下载到本地，代码由svn服务器统一管理   Git   分布式的版本控制系统，没有中央服务器，每个人的电脑上都有一个">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-31T11:05:27.000Z">
+<meta property="article:modified_time" content="2020-10-31T11:06:41.945Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/10/31/git/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>git | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/31/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-31 19:05:27 / Modified: 19:06:41" itemprop="dateCreated datePublished" datetime="2020-10-31T19:05:27+08:00">2020-10-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
+        <blockquote>
+<p>git是为了管理linux系统下代码的工具，后来延申出来到各个系统都可使用</p>
+</blockquote>
+<h2 id="Git与svn对比"><a href="#Git与svn对比" class="headerlink" title="Git与svn对比"></a>Git与svn对比</h2><blockquote>
+<p>svn</p>
+</blockquote>
+<ul>
+<li>这是一个集中式的代码管理工具，首先需要一台svn服务器，每一个开发电脑上需要装上一个svn的客户端，可以直接将代码提交到svn服务器上，想下载代码，可以直接从svn服务器上下载到本地，代码由svn服务器统一管理</li>
+</ul>
+<blockquote>
+<p>Git</p>
+</blockquote>
+<ul>
+<li>分布式的版本控制系统，没有中央服务器，每个人的电脑上都有一个完整的版本库，这样工作的时候就不需要联网了，但是如何多人协作呢？如果需要交换代码就需要一个远程仓库，也叫做共享版本库；如鼓果只是单人进行开发就不需要远程仓库，自己形成要给闭环；</li>
+</ul>
+<h2 id="Git的工作流程"><a href="#Git的工作流程" class="headerlink" title="Git的工作流程"></a>Git的工作流程</h2><ul>
+<li>从远程仓库克隆Git资源作为本地仓库；</li>
+<li>从本地仓库中checkout代码，然后进行代码修改；</li>
+<li>在提交前先将代码提交到暂存区；</li>
+<li>提交修改，提交到本地仓库，本地仓库中保存修改的各个历史版本；</li>
+<li>在修改完成后，需要和团队成员共享代码时，可以将代码push到远程仓库；</li>
+</ul>
+<h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><ul>
+<li><p>tortoiseGit安装</p>
+</li>
+<li><p>安装完成之后，首先需要创建一个版本库，也就是本地仓库，三种方法：</p>
+<ul>
+<li>右键 Git GUI here 创建一个新仓库；</li>
+<li>右键 Git Bash Here 打开命令行，输入git init</li>
+<li>右键，用乌龟创建tortoiseGit创建；</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意： .git文件夹就是本地版本库包含.git 的这个目录叫做工作目录如果想向本地仓库.git添加一个文件的话，这个文件必须在工作目录下</p>
+</blockquote>
+<h2 id="如何向本地仓库中添加文件"><a href="#如何向本地仓库中添加文件" class="headerlink" title="如何向本地仓库中添加文件"></a>如何向本地仓库中添加文件</h2><ul>
+<li>将工作目录下的文件右键-tortoiseGit-添加</li>
+<li>这个时候文件是加入到了暂存区index Stage，文件图标显示一个加号；<blockquote>
+<p>工作区和暂存区介绍：工作区(Working Directory)也就是工作目录，上文说过；暂存区：其实也就是版本库里面的一个区域</p>
+</blockquote>
+</li>
+<li>然后再右键-Git(提交)-&gt;master</li>
+<li>接着需要写入日志信息，也就是本次对代码进行了何种操作，要写出来；</li>
+<li>点击提交，要添加的文件图标上就会显示一个对勾，表示添加成功</li>
+</ul>
+<h2 id="修改内容并提交"><a href="#修改内容并提交" class="headerlink" title="修改内容并提交"></a>修改内容并提交</h2><ul>
+<li>添加成功之后，右键-tortoiseGit-版本库浏览器-就可以看到本地仓库里面的内容了</li>
+<li>如果需要修改文件，则直接修改，然后再点一次提交即可，每次都要  写日志信息</li>
+</ul>
+<h2 id="文件的删除"><a href="#文件的删除" class="headerlink" title="文件的删除"></a>文件的删除</h2><ul>
+<li>误删了可以右键-tortoise-还原</li>
+<li>右键删除之后，本地仓库中这个文件还是有的，如果要彻底删除这个文件就可以右键点击 git(提交)，就会显示缺失状态的文件，点击提交即可；</li>
+<li>如果希望在仓库中删除但是本地保留的话：可以点击&lt;删除并保留本地副本&gt;点击提交，就会在本地保留，仓库中删除；</li>
+</ul>
+<h2 id="将项目添加到本地仓库"><a href="#将项目添加到本地仓库" class="headerlink" title="将项目添加到本地仓库"></a>将项目添加到本地仓库</h2><ul>
+<li>将项目文件夹复制粘贴到工作目录下</li>
+<li>添加到暂存区</li>
+<li>项目中不需要传进仓库的我们要将其忽略掉，右键-tortoiseGit-删除并添加到 忽略列表-递归忽略-gitignore到文件夹所在目录-保留本地文件 即可；</li>
+<li>注意 ：.gitignore文件依然要添加到仓库；</li>
+<li>然后回到工作目录下，将整个项目文件夹提交到版本库；</li>
+</ul>
+<h2 id="用Github创建一个远程仓库"><a href="#用Github创建一个远程仓库" class="headerlink" title="用Github创建一个远程仓库"></a>用Github创建一个远程仓库</h2><ul>
+<li>如果一个项目开发需要多个开发人员，需要交换代码，就需要一个远程仓库</li>
+<li>创建一个新仓库：填写名称，描述，公开性，不要README文件</li>
+</ul>
+<h2 id="将代码推送到远程仓库，两种方式"><a href="#将代码推送到远程仓库，两种方式" class="headerlink" title="将代码推送到远程仓库，两种方式"></a>将代码推送到远程仓库，两种方式</h2><blockquote>
+<p>SSH:是目前最安全的传输协议，需要生成一对密钥对</p>
+</blockquote>
+<ul>
+<li>首先在工作目录中右键-get bash here-键入’ssh-keygen -t rsa’</li>
+<li>一路回车，就会在当前用户目录下的.ssh文件夹中生成一个密钥对</li>
+<li>其中没有后缀的就是私钥，公钥需要告诉github服务器</li>
+<li>复制公钥，GitHub中点击头像-&gt;setting-&gt;SSH and …-&gt;将其粘贴即可；</li>
+<li>这样就可以无需输入用户名和密码就可以直接和服务器进行安全通信</li>
+<li>使用对应的命令就可以将本地仓库push到远程仓库了</li>
+<li>重新打开一个Git bash here，将对应的代码输入，就推送成功了，刷新即可</li>
+<li>也可以使用乌龟tortoiseGit来实现推送，但是我喜欢命令行^0^</li>
+</ul>
+<blockquote>
+<p>HTTPS:</p>
+</blockquote>
+<ul>
+<li>不需要生成密钥对了，但是需要Github的用户名和密码</li>
+<li>其余的和SSH一样</li>
+</ul>
+<h2 id="克隆远程仓库到本地"><a href="#克隆远程仓库到本地" class="headerlink" title="克隆远程仓库到本地"></a>克隆远程仓库到本地</h2><ul>
+<li>找到需要下载的项目，直接点击绿色按钮<clone or download></li>
+<li>可以使用两种方式HTTPS和SSH进行下载</li>
+<li>命令行窗口打开，键入：git clone 粘贴HTTPS或者SSH路径即可；</li>
+</ul>
+<h2 id="将修改的文件推送到Github以及冲突的解决"><a href="#将修改的文件推送到Github以及冲突的解决" class="headerlink" title="将修改的文件推送到Github以及冲突的解决"></a>将修改的文件推送到Github以及冲突的解决</h2><ul>
+<li>需要使用乌龟，这样推送和拉取很方便，直接右键同步即可；</li>
+<li>在这个过程中可能会遇到冲突问题，比如在你修改文件时，别人传进去了自己修改后的，这样你本地的文件就不是最新的，这样推送就会失败，冲突的文件会显示感叹号，我们必须手动修改冲突文件，把远端给我们加上的特殊字符进行删除，将代码合并，然后右键-&gt;解决冲突，然后提交到本地仓库，然后点击推送，就把修改后的推送到了远程，这样就把两个人两次修改的内容都同步到了远程。</li>
+</ul>
+<h2 id="搭建私有git服务器"><a href="#搭建私有git服务器" class="headerlink" title="搭建私有git服务器"></a>搭建私有git服务器</h2><ul>
+<li>有时一些保密的项目不能传到Github上，所以需要搭建一个私有的远程仓库</li>
+<li>需要在linux系统中操作</li>
+</ul>
+<h2 id="分支概念"><a href="#分支概念" class="headerlink" title="分支概念"></a>分支概念</h2><ul>
+<li>只要有本地仓库，就会有一个master分支，也就是主分支，master指针指向当前版本；</li>
+<li>如果想在现有代码上进行自己的修改，就可以创建一个分支(如dev)，每修改一次就会产生一个版本，每个版本都有dev指针指向；</li>
+<li>分支可以有n个，每个分支里面的内容是互不干扰的，同时也可以将不同的分支内容合并到一起，觉得分支不用了，还可以将其删除；</li>
+<li>如何创建分支：在仓库中右键-&gt;乌龟-&gt;切换/检出/创建分支-&gt;输入分支名称即可；</li>
+<li>分支之间就像是平行时空</li>
+</ul>
+<h2 id="分支的合并和删除"><a href="#分支的合并和删除" class="headerlink" title="分支的合并和删除"></a>分支的合并和删除</h2><ul>
+<li>首先切换到master(最终要哪个分支就切换到哪个分支)</li>
+<li>右键-&gt;乌龟-&gt;合并，选择要合并的分支名称即可；</li>
+<li>合并过程中会产生冲突，比如对同一个文件两个分支都进行了修改<pre><code>    这时就根据上面所说的解决冲突的方式，手动进行解决，重新提交master即可；</code></pre>
+</li>
+<li>不用的分支右键-&gt;切换/检出-&gt;右键删除分支即可</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/31/Express/" rel="prev" title="Express">
+      <i class="fa fa-chevron-left"></i> Express
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/31/Node-js/" rel="next" title="Node.js">
+      Node.js <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E4%B8%8Esvn%E5%AF%B9%E6%AF%94"><span class="nav-number">1.</span> <span class="nav-text">Git与svn对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Git的工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%91%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">如何向本地仓库中添加文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%86%85%E5%AE%B9%E5%B9%B6%E6%8F%90%E4%BA%A4"><span class="nav-number">5.</span> <span class="nav-text">修改内容并提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%A0%E9%99%A4"><span class="nav-number">6.</span> <span class="nav-text">文件的删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="nav-number">7.</span> <span class="nav-text">将项目添加到本地仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8Github%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="nav-number">8.</span> <span class="nav-text">用Github创建一个远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E4%BB%A3%E7%A0%81%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%EF%BC%8C%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">将代码推送到远程仓库，两种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8B%E9%9A%86%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="nav-number">10.</span> <span class="nav-text">克隆远程仓库到本地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E4%BF%AE%E6%94%B9%E7%9A%84%E6%96%87%E4%BB%B6%E6%8E%A8%E9%80%81%E5%88%B0Github%E4%BB%A5%E5%8F%8A%E5%86%B2%E7%AA%81%E7%9A%84%E8%A7%A3%E5%86%B3"><span class="nav-number">11.</span> <span class="nav-text">将修改的文件推送到Github以及冲突的解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89git%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">12.</span> <span class="nav-text">搭建私有git服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E6%A6%82%E5%BF%B5"><span class="nav-number">13.</span> <span class="nav-text">分支概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E7%9A%84%E5%90%88%E5%B9%B6%E5%92%8C%E5%88%A0%E9%99%A4"><span class="nav-number">14.</span> <span class="nav-text">分支的合并和删除</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

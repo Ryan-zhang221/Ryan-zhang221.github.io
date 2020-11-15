@@ -1,31 +1,397 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-block content
-  article#post(class="")
-    if top_img === false
-      include includes/header/post-info.pug
+<link rel="stylesheet" href="/css/main.css">
 
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache:theme.fragment_cache})
+  <meta name="description" content="数据库知识12345678910111213数据库（database）      &gt; 数据库是按照数据结构来组织，存储，和管理数据的仓库      &gt; 我们的程序都是在内存中运行，一旦程序运行结束或者计算机断电，        程序中的数据都会都会消失      &gt; 所以我们就需要将一些程序运行的数据持久化到硬盘中去，确保数        据的安全性，而数据库就是数据持久化的最佳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB.md">
+<meta property="og:url" content="http://example.com/2020/10/31/MongoDB-md/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据库知识12345678910111213数据库（database）      &gt; 数据库是按照数据结构来组织，存储，和管理数据的仓库      &gt; 我们的程序都是在内存中运行，一旦程序运行结束或者计算机断电，        程序中的数据都会都会消失      &gt; 所以我们就需要将一些程序运行的数据持久化到硬盘中去，确保数        据的安全性，而数据库就是数据持久化的最佳">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-31T10:43:41.000Z">
+<meta property="article:modified_time" content="2020-10-31T10:56:44.718Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/10/31/MongoDB-md/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>MongoDB.md | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/31/MongoDB-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MongoDB.md
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-31 18:43:41 / Modified: 18:56:44" itemprop="dateCreated datePublished" datetime="2020-10-31T18:43:41+08:00">2020-10-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
+        <h2 id="数据库知识"><a href="#数据库知识" class="headerlink" title="数据库知识"></a>数据库知识</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">数据库（database）</span><br><span class="line">      &gt; 数据库是按照数据结构来组织，存储，和管理数据的仓库</span><br><span class="line">      &gt; 我们的程序都是在内存中运行，一旦程序运行结束或者计算机断电，</span><br><span class="line">        程序中的数据都会都会消失</span><br><span class="line">      &gt; 所以我们就需要将一些程序运行的数据持久化到硬盘中去，确保数</span><br><span class="line">        据的安全性，而数据库就是数据持久化的最佳选择</span><br><span class="line">      &gt; 说白了，数据库就是存储数据的仓库</span><br><span class="line"></span><br><span class="line">    数据库的分类</span><br><span class="line">      &gt; 关系型数据库(RDBMS)</span><br><span class="line">        &gt; 如：MySQL Oracle DB2 SQL Server,关系数据库中全都是表</span><br><span class="line">      &gt; 非关系型数据库(NoSQL)-not only SQL</span><br><span class="line">        &gt; MongoDB、Redis,是一种键值对数据库，文档数据库</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MongoDB简介</span><br><span class="line">    &gt; 是为快速开发互联网Web应用而设计的数据库系统；</span><br><span class="line">    &gt; MongoDB的设计目标是极简，灵活，作为Web应用栈的一部分；</span><br><span class="line">    &gt; MongoDB的数据模型是面向文档的，所谓的文档是一种类似于JSON的结构，简单理解</span><br><span class="line">      MongoDB这个数据库中存的是各种各样的JSON</span><br><span class="line">    &gt; 三个概念：</span><br><span class="line">           1.数据库(database)</span><br><span class="line">               -是一个仓库，在仓库中可以存放集合</span><br><span class="line">           2.集合(collection)</span><br><span class="line">               -集合类似于数组，在集合中可以存放文档</span><br><span class="line">           3.文档(document)</span><br><span class="line">               -文档是数据库中最小的单位，我们存储和操作的内容都是文档</span><br><span class="line">           注意：MongoDB中，数据库和集合都不需要我们手动创建，当我们创建文档时</span><br><span class="line">                如果文档所在的集合或数据库不存在的话，会自动创建数据库和集合；</span><br><span class="line"></span><br><span class="line">    &gt; 安装mongoDB，配置环境变量，在c盘根目录创建一个文件夹data，在data中新建一个文件夹</span><br><span class="line">      db，打开cmd命令行窗口输入mongod启动mongodb服务器，然后再打开一个cmd窗口输入mongo</span><br><span class="line">      再回车，出现小箭头就表示成功连接到了数据库</span><br></pre></td></tr></table></figure>
+
+<h2 id="MongoDB基本操作"><a href="#MongoDB基本操作" class="headerlink" title="MongoDB基本操作"></a>MongoDB基本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> Mongo的cmd窗口也叫Mongo shell</span><br><span class="line"> </span><br><span class="line"> -使用步骤：</span><br><span class="line">          1.需要打开数据库：mongod</span><br><span class="line">          2.重新打开一个新的命令行：mongo  即可使用</span><br><span class="line"></span><br><span class="line"> -基本指令</span><br><span class="line">          show dbs ：显示当前所有的数据库</span><br><span class="line">          use 数据库名字：进入到指定的数据库中</span><br><span class="line">          db：表示当前所处的数据库</span><br><span class="line">          show collections：显示数据库中所有的集合</span><br><span class="line"> MongoDB中的属性值也可以是一个文档，此时叫做内嵌文档</span><br><span class="line"> 如果要查询内嵌文档，可以使用.的方式一层一层查找，注意这时的属性名要加引号，用的较多</span><br><span class="line"></span><br><span class="line"> -数据库的CRUD(增删改查)操作</span><br><span class="line">         -向数据库中插入文档</span><br><span class="line">             db.&lt;collections&gt;.insert(doc):向集合中插入一个或多个文档，一个就传一个对象，多个就传一个数组；</span><br><span class="line">	db.&lt;collections&gt;.find():查询当前集合中的所有文档</span><br><span class="line">	向集合中插入文档时，如果没有给文档指定_id属性，则数据库会自动为文档添加</span><br><span class="line">	该属性来作为文档的唯一标识，确保数据的唯一性，_id可以自己指定，数据库就不会添加了；</span><br><span class="line">	db.collections.insertOne();插入一个</span><br><span class="line">	db.collections.insertMany();插入多个</span><br><span class="line">-在数据库中查询文档</span><br><span class="line">	db.collections.find():用来查询集合中所有符合条件的文档：</span><br><span class="line">		括号里可以接受一个对象作为条件参数，如&#123;属性名：属性值&#125;</span><br><span class="line">		而且可以添加多个键值对进行查询</span><br><span class="line">		find()返回的是一个数组</span><br><span class="line">	db.collections.findOne():用来查询集合中符合条件的第一个文档</span><br><span class="line">		findOne()返回的是一个对象</span><br><span class="line">	db.collections.find(&#123;&#125;).count():查询所有结果的数量</span><br><span class="line">		返回值数值，表示所有文档的数量</span><br><span class="line">-修改数据库中的文档</span><br><span class="line">	db.collections.update(查询条件，新对象)：</span><br><span class="line">		update默认情况下会使用新对象来替换旧对象，即原来的对象中所有的属性都没了，换了新对象的属性；</span><br><span class="line">		如果需要修改指定的属性，而不是替换整个对象，则需要使用修改操作符：$set 用来修改文档中的指定属性</span><br><span class="line">		$set   修改文档的指定属性</span><br><span class="line">		$unset  用来删除文档的指定属性</span><br><span class="line">		$push  用来向数组中添加一个新的元素，此操作符可以添加重复元素</span><br><span class="line">		$addToSet  用来向数组中添加一个新的元素，注意，此操作符不会添加重复元素</span><br><span class="line">		使用方法：db.collections.update(&#123;找到要修改的文档_id&#125;，&#123;$set:&#123;这里写要改动的键值对&#125;&#125;;</span><br><span class="line">		update()默认情况下只可以修改一个文档；</span><br><span class="line">	db.collections.updateOne():修改一个符合条件的文档</span><br><span class="line">	db.collections.updateMany():同时修改多个符合条件的文档</span><br><span class="line">	db.collections.replaceOne():替换一个文档</span><br><span class="line">	</span><br><span class="line">-删除文档</span><br><span class="line">	db.collections.remove();</span><br><span class="line">		默认删除符合条件的所有文档，如果第二个参数为true，则只会删除一个</span><br><span class="line">		如果只传递一个空对象.remove(&#123;&#125;)作为参数，则会删除集合中的所有文档，即清空集合(性能略差)；</span><br><span class="line">		db.collections.drop():删除集合</span><br><span class="line">		db.dropdatabase();删除数据库</span><br><span class="line">		一般数据库中的数据都不会删除，所以删除的方法很少调用</span><br><span class="line">		一般会在数据中添加一个字段(字段也就是一个属性)，来表示数据是否被删除</span><br><span class="line">	db.collections.deleteOne()：删除一个</span><br><span class="line">	db.collections.deleteMany()：删除多个</span><br><span class="line">		remove()可以通过条件来删除文档，传递方式与find()一样</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">如果要向数据库中插入多条数据，则使用一个for循环</span><br><span class="line">	但是速度很慢，希望插入速度快一点，如何一次性插入2000条数据？</span><br><span class="line">	可以这样：创建一个数组，先把要存的数据添加进数组里，再将数组一次添加进数据库。</span><br><span class="line">	注意，数据库的方法尽量少调用，因为性能较差。</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	查询操作符</span><br><span class="line">		可以传递多个条件</span><br><span class="line">			$gt  大于</span><br><span class="line">			$lt  小于</span><br><span class="line">			$inc  自增</span><br><span class="line">			$or   或者，表示且的关系</span><br><span class="line">			</span><br><span class="line"></span><br><span class="line">	查询集合中的前10条数据</span><br><span class="line">		db.collections.find().limit(10); &#x2F;&#x2F;设置显示的上限</span><br><span class="line">		在开发时，我们绝对不会执行不带条件的查询，因为数据太多了，浪费性能,db.collections.find();</span><br><span class="line">		</span><br><span class="line">	查询集合中的11到20条数据，也就是分页，每页显示10条数据</span><br><span class="line">		db.collections.find().skip(10).limit(10);跳过前10条数据，然后再显示10条数据。</span><br><span class="line">		</span><br><span class="line">	总结分页操作：skip(页码-1*每页显示的条数).limit(每页显示的条数);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	查询文档时，默认情况是按照_id的值进行排列（升序）</span><br><span class="line">			sort()可以用来指定文档排序的规则，sort()需要传递一个对象来指定排序规则：1表示升序，-1表示降序</span><br><span class="line">			skip limit sort  之间可以任意顺序，软件会自动进行排序</span><br><span class="line"></span><br><span class="line">	在查询时，可以在第二个参数的位置来设置查询结果的投影，可以理解为只显示所有数据中的某一项</span><br><span class="line">			第一个参数传递一个空对象</span><br><span class="line">			第二个参数传递一个对象 &#123;name:1,_id:0&#125;  表示显示name，不显示id；</span><br></pre></td></tr></table></figure>
+
+<h2 id="文档之间的关系"><a href="#文档之间的关系" class="headerlink" title="文档之间的关系"></a>文档之间的关系</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">文档之间的关系</span><br><span class="line">		一对一（one to one)夫妻</span><br><span class="line">				在MongoDB中，可以通过内嵌文档的形式来体现出一对一的关系</span><br><span class="line">				</span><br><span class="line">		一对多（one to many）&#x2F;多对一  父母和孩子  用户和订单</span><br><span class="line">				也可以使用内嵌文档的形式来体现一对多的关系</span><br><span class="line">				主要使用在另一个集合中将一的_id 设置为多的一个属性，这样就形成了对应关系</span><br><span class="line">				每一个“多”中都有一个“一”的_id，就ok了</span><br><span class="line">				</span><br><span class="line">		多对多（many to many）分类和商品  老师和学生</span><br><span class="line">				和一对多类似，只不过上述将_id设置给了“多”，要实现多对多，只要将这个_id</span><br><span class="line">				改为一个数组即可；</span><br></pre></td></tr></table></figure>
+
+<h2 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Mongoose简介</span><br><span class="line">		- 之前我们都是通过shell来完成对数据库的各种操作的，但是在开发中大部分时间我们都需要通过</span><br><span class="line">		  程序来完成对数据库的各种操作</span><br><span class="line">		- Mongoose就是一个让我们可以通过Node来操作MongoDB的模块；</span><br><span class="line">		- Mongoose是一个对象文档模型库（ODM），他对Node原生的MongoDB模块进行了进一步的优化封装，并提供</span><br><span class="line">		  了更多的功能；</span><br><span class="line">		- 在大多数情况下，它用来把结构化的模式应用到一个MongoDB集合，并提供了验证和类型转换</span><br><span class="line">		- 简单理解：ODM指的是object Document Model ，其中Object对象指的就是js对象，而doucument文档指的</span><br><span class="line">		  就是数据库中的文档，把数据库中所存的这些文档，将其映射成了JS中的一个一个对象，我们通过对对象</span><br><span class="line">		  的操作就可以操作数据库了，他的作用就是让我们以面向对象的形式去操作数据库；</span><br><span class="line">		  </span><br><span class="line">		  </span><br><span class="line">	Mongoose的好处</span><br><span class="line">		- 可以为文档创建一个模式结构（Schema），可叫做约束，在数据进入我们的数据库之前进行一次验证，符合</span><br><span class="line">		  相关的格式才可以进入，确保数据是对的，优化了MongoDB的缺点；</span><br><span class="line">		- 数据可以通过类型转换转换为对象模型</span><br><span class="line">		- 可以使用中间件来应用业务逻辑挂钩；web服务器</span><br><span class="line">		- 比Node原生的MongoDB驱动更容易；</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	Mongoose为我们提供了几个新的对象</span><br><span class="line">		- Schema（模式对象）</span><br><span class="line">			定义约束了数据库中的文档结构</span><br><span class="line">		- Model</span><br><span class="line">			Model对象作为集合中的所有文档的表示，相当于MongoDB数据库中的collection</span><br><span class="line">		- Document</span><br><span class="line">			表示集合中的具体文档，相当于集合中的一个具体文档；</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	Mongoose使用步骤</span><br><span class="line">		1.下载安装Mongoose</span><br><span class="line">				cnpm i mongoose --save</span><br><span class="line">		2.在项目中引入mongoose</span><br><span class="line">				var mongoose &#x3D; require(&quot;mongoose&quot;);</span><br><span class="line">		3.连接MongoDB数据库</span><br><span class="line">				mongoose.connect(&#39;mongodb:&#x2F;&#x2F;数据库的ip地址:端口号&#x2F;数据库名&#39;,);</span><br><span class="line">				如果端口号是默认端口号（27017），则可以省略不写</span><br><span class="line">		4.断开数据库的连接（一般不需要调用）</span><br><span class="line">				mongoose.disconnect();</span><br><span class="line">				一般情况下，只需要连接数据库一次，连接一次之后，除非项目停止服务器关闭，否则连接不会断开；</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	监听MongoDB数据库的连接状态</span><br><span class="line">		- 在mongoose对象中，有一个属性叫做connection，该对象表示的就是数据库的连接</span><br><span class="line">		  通过监视该对象的状态，可以来监听数据库的连接与断开</span><br><span class="line">				mongoose.connection.once(&quot;open&quot;,function()&#123;&#125;);数据库连接成功的事件</span><br><span class="line">				mongoose.connection.once(&quot;open&quot;,function()&#123;&#125;);数据库连接断开的事件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	Schema和Model</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			赋值：var Schema &#x3D; mongoose.Schema;</span><br><span class="line">			创建Schema对象：  var stuSchema &#x3D; new Schema&#123;</span><br><span class="line">								name:String,</span><br><span class="line">								age:Number,</span><br><span class="line">								address:String,</span><br><span class="line">								gender:&#123;type:String,default:&quot;female&quot;&#125;&#x2F;&#x2F;可以设置默认值</span><br><span class="line">								&#125;</span><br><span class="line">			通过Schema创建model：var StuModel &#x3D; mongoose.model(modelname,schema);&#x2F;&#x2F;modelname要映射的集合名字</span><br><span class="line">								 用上述建立的schema对象进行约束；</span><br><span class="line">			向数据库中插入文档：</span><br><span class="line">								StuModel.create(要插入的文档, function(err)&#123;</span><br><span class="line">									if(!err)&#123;console.log(&quot;插入成功&quot;)&#125;;</span><br><span class="line">								&#125;);</span><br><span class="line">			mongoose会自动将集合名变为复数；</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	Model中的方法</span><br></pre></td></tr></table></figure>
+
+<h2 id="model"><a href="#model" class="headerlink" title="model"></a>model</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Model的操作</span><br><span class="line">		-有了Model，我们就可以对数据库进行一些增删改查的工作了</span><br><span class="line">		</span><br><span class="line">		增</span><br><span class="line">		-model.create(doc(s),callback);用来创建一个文档并添加到数据库中,可以传一个或多个对象；</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		查</span><br><span class="line">		-model.find(conditions,[projection],[options],[callback]);</span><br><span class="line">				查询所有符合条件的文档，总会返回一个数组</span><br><span class="line">		-model.findById(id,[projection],[options],[callback]);</span><br><span class="line">				根据文档的ID属性查询文档；</span><br><span class="line">		-model.findOne(conditions,[projection],[options],[callback]);</span><br><span class="line">				查询符合条件的第一个文档,总会返回一个具体的文档对象	</span><br><span class="line">		参数： </span><br><span class="line">				conditions: 查询的条件</span><br><span class="line">				projection: 投影，可以设置你想要的字段，不要id的话前面加-号；</span><br><span class="line">							两种方式：&#123;name:1,_id:0&#125;  或者  &quot;name -_id&quot;</span><br><span class="line">				options: 查询选项（skip limit）</span><br><span class="line">				callback: 回调函数，必须传</span><br><span class="line"></span><br><span class="line">		改</span><br><span class="line">		Model.update(conditions,doc,[options],[callback]);</span><br><span class="line">		Model.updateMany(conditions,doc,[options],[callback]);</span><br><span class="line">		Mode.updateOne(conditions,doc,[options],[callback]);</span><br><span class="line">		Model.replaceOne(conditions,doc,[options],[callback]);</span><br><span class="line">				用来修改一个或多个文档</span><br><span class="line">				参数：</span><br><span class="line">						conditions: 查询的条件；</span><br><span class="line">						doc: 修改后的对象；</span><br><span class="line">						options: 配置参数；</span><br><span class="line">						callback: 回调函数；</span><br><span class="line">	</span><br><span class="line">		删</span><br><span class="line">		Model.remove(conditions, callback);</span><br><span class="line">		Model.deleteOne(conditions, callback);</span><br><span class="line">		Model.deleteMany(conditions, callback);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		Model.count(conditions, callback);用来统计文档的数量</span><br></pre></td></tr></table></figure>
+
+<h2 id="document"><a href="#document" class="headerlink" title="document"></a>document</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Document 和 集合中的文档一一对应，Document是Model的一个实例，通过</span><br><span class="line">	Model查询到的结果都是Document；</span><br><span class="line">	</span><br><span class="line">	Document的方法#</span><br><span class="line">			-save([options], [fn])</span><br><span class="line">			-update(update, [options], [callback])</span><br><span class="line">			-remove([callback])</span><br><span class="line">			-get(name)：获取文档中的指定属性值</span><br><span class="line">			-set(neme, value):设置文档的指定属性值</span><br><span class="line">			-id  :获取文档的ID属性值</span><br><span class="line">			-ToJSON() :转换为一个JSON对象</span><br><span class="line">			-ToObject()  ：将Document对象转换为一个普通的JS对象，这样document对象的属性和方法都不能使用了</span><br><span class="line">			               有时候需要删属性时可以使用</span><br></pre></td></tr></table></figure>
+
+<h2 id="mongoose的模块化"><a href="#mongoose的模块化" class="headerlink" title="mongoose的模块化"></a>mongoose的模块化</h2><ul>
+<li>可以在外部文件写一个模块，就叫做connect_mongo,专门用来连接数据库，这样</li>
+<li>要使用的时候，直接require(“这里写connect_mongo的路径”)，就可以直接使用；</li>
+<li>另一个文件专门用来创建模型对象</li>
+<li>代码复用</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/31/19-cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB/" rel="prev" title="19.cookie、localStorage、sessionStorage区别">
+      <i class="fa fa-chevron-left"></i> 19.cookie、localStorage、sessionStorage区别
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/31/AJAX/" rel="next" title="AJAX">
+      AJAX <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">数据库知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">MongoDB简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">MongoDB基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">5.</span> <span class="nav-text">文档之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoose"><span class="nav-number">6.</span> <span class="nav-text">mongoose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-number">7.</span> <span class="nav-text">model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document"><span class="nav-number">8.</span> <span class="nav-text">document</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoose%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">mongoose的模块化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,31 +1,388 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-block content
-  article#post(class="")
-    if top_img === false
-      include includes/header/post-info.pug
+<link rel="stylesheet" href="/css/main.css">
 
-    #article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
-        
-    if theme.reward.enable
-      !=partial('includes/post/reward', {}, {cache:theme.fragment_cache})
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .post-ad!=theme.ad.post
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache:theme.fragment_cache})
+  <meta name="description" content="ios 键盘遮挡问题1234567891011scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目中遇到的问题&#39;">
+<meta property="og:url" content="http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ios 键盘遮挡问题1234567891011scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-01T06:02:08.000Z">
+<meta property="article:modified_time" content="2020-11-01T06:02:27.833Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>项目中遇到的问题' | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/01/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          项目中遇到的问题'
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-11-01 14:02:08 / Modified: 14:02:27" itemprop="dateCreated datePublished" datetime="2020-11-01T14:02:08+08:00">2020-11-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
+        <ol>
+<li><h2 id="ios-键盘遮挡问题"><a href="#ios-键盘遮挡问题" class="headerlink" title="ios 键盘遮挡问题"></a>ios 键盘遮挡问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scrollIntoView(alignWithTop): 滚动浏览器窗口或容器元素，以便在当前视窗的可见范围看见当前元素</span><br><span class="line">alignWithTop &#x3D; true  或 空   窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐  （元素向上滚动）</span><br><span class="line">alignWithTop &#x3D; false  调用元素会尽可能全部出现在视口中，可能的话，调用元素的底部会与视口顶部平齐，不过顶部不一定平齐。（元素不会滚动）</span><br><span class="line">常见浏览器：IE、Chrome、Firefox、Safari和Opera。 都支持</span><br><span class="line">	let _this &#x3D; this</span><br><span class="line">	setTimeOut(function()&#123;  &#x2F;&#x2F;每100毫秒 滚动1次</span><br><span class="line">		_this.scrollIntoView(true)</span><br><span class="line">	&#125;,100)</span><br><span class="line">面试的时候 要说一下</span><br><span class="line">当input 得到焦点的时候 出发方法，方法作用 从新计算 元素到顶部的距离，元素向上移动的距离&#x3D;软键盘的高度</span><br><span class="line">ios手机型号太多，滚动数值需要多次获取</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="IE9中，-请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题"><a href="#IE9中，-请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题" class="headerlink" title="IE9中， 请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题  *****"></a>IE9中， 请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题  *****</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&#123;name:&quot;张三张三张三张三张三张三&quot;,sex:&quot;man&quot;&#125;</span><br><span class="line">&#125; </span><br><span class="line">	&lt;select v-for&#x3D;&quot;&quot;&gt;</span><br><span class="line">		&lt;option&gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;option&gt;  &#x3D;&#x3D;&#x3D;&gt; 张</span><br><span class="line">	&lt;&#x2F;select&gt;</span><br><span class="line">	</span><br><span class="line"> 解决： 重绘页面的select 输入框</span><br><span class="line"></span><br><span class="line">	forceRedrawSelect: function (useNextTick) &#123;</span><br><span class="line">	    useNextTick &#x3D; useNextTick !&#x3D;&#x3D; false;</span><br><span class="line">	    if (!browser.isIE)</span><br><span class="line">	        return;</span><br><span class="line">	    var _this &#x3D; this;</span><br><span class="line">	    var redraw &#x3D; function () &#123;</span><br><span class="line">	        var $select &#x3D; _this.$(&quot;select&quot;); &#x2F;&#x2F;选中select</span><br><span class="line">	        &#x2F;&#x2F;移除宽度的样式 </span><br><span class="line">	        $select.css(&#39;width&#39;, 0); </span><br><span class="line">	        $select.css(&#39;width&#39;, &#39;&#39;); </span><br><span class="line">	        &#x2F;&#x2F;单独设定样式</span><br><span class="line">			$select.css(&#39;width&#39;, &#39;300px&#39;);</span><br><span class="line">	    &#125;;</span><br><span class="line">	    if(useNextTick)</span><br><span class="line">	        this.$nextTick(redraw);</span><br><span class="line">	    else</span><br><span class="line">	        redraw()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue自定义指令判断时机问题"><a href="#vue自定义指令判断时机问题" class="headerlink" title="vue自定义指令判断时机问题"></a>vue自定义指令判断时机问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 错误写法 ，不能通过innerHTML获取</span><br><span class="line">&#39;null&#39; (el) &#123;</span><br><span class="line">    if (el.innerHTML &#x3D;&#x3D;&#x3D; &#39;&#39; || el.innerHTML &#x3D;&#x3D;&#x3D; &#39;--&#39;) &#123;</span><br><span class="line">      addClass(el, &#39;null-handler&#39;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      removeClass(el, &#39;null-handler&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#x2F;&#x2F; 正确写法 ，直接传值</span><br><span class="line">&#39;null&#39; (el, &#123; value, oldValue &#125;) &#123;</span><br><span class="line">  if (oldValue &#x3D;&#x3D;&#x3D; value) return &#x2F;&#x2F;终止程序</span><br><span class="line">	  if (value &#x3D;&#x3D;&#x3D; &#39;&#39; || value &#x3D;&#x3D;&#x3D; &#39;--&#39;) &#123;</span><br><span class="line">	    addClass(el, &#39;null-handler&#39;)</span><br><span class="line">	  &#125; else &#123;</span><br><span class="line">	    removeClass(el, &#39;null-handler&#39;)</span><br><span class="line">	  &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="mounted钩子函数中请求数据导致页面闪屏问题"><a href="#mounted钩子函数中请求数据导致页面闪屏问题" class="headerlink" title="mounted钩子函数中请求数据导致页面闪屏问题 ****"></a>mounted钩子函数中请求数据导致页面闪屏问题 ****</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">就是加载时机问题，放在created里会比mounted触发早一点，</span><br><span class="line">如果在页面挂载完之前请求完成的话就不会看到闪屏了</span><br></pre></td></tr></table></figure>
+
+<h2 id="用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性"><a href="#用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性" class="headerlink" title="用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性"></a>用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; es6写法</span><br><span class="line">let nodeList &#x3D; [...this.$el.querySelectorAll(&#39;[id^&#x3D;productItem]&#39;)] &#x2F;&#x2F;对象转化成集合</span><br><span class="line">&#x2F;&#x2F; es5写法</span><br><span class="line">let nodeList &#x3D; Array.prototype.slice.call(this.$el.querySelectorAll(&#39;[id^&#x3D;productItem]&#39;))</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="数据接口：-postman可以收到数据，axios收不到-这是为什么？？？？"><a href="#数据接口：-postman可以收到数据，axios收不到-这是为什么？？？？" class="headerlink" title="数据接口： postman可以收到数据，axios收不到 这是为什么？？？？ **"></a>数据接口： postman可以收到数据，axios收不到 这是为什么？？？？ <strong>**</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.post 与 传参格式有关系：</span><br><span class="line">	params：&#123;参数名称:参数值&#125;</span><br><span class="line">2.postman</span><br><span class="line">	header : content-type: applicaton&#x2F;form-data</span><br><span class="line">  axios  默认 json提交，不是表单数据</span><br><span class="line">  	header : content-tye:application&#x2F;x-www-from-urlencode</span><br><span class="line">  	axios.defaults.header.post[&quot;content-type&quot;]  &#x3D; &quot;content-tye:application&#x2F;x-www-from-urlencode&quot;</span><br><span class="line">	axios.create(&#123;</span><br><span class="line">		baseUrl:</span><br><span class="line">		timeOut:</span><br><span class="line">		header:&#123;</span><br><span class="line">			&quot;content-type&quot;:&quot;content-tye:application&#x2F;x-www-from-urlencode&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">3.如果设置成功，还是接受不到---》后台问题</span><br></pre></td></tr></table></figure>
+
+<h2 id="兼容高版本的浏览器-，新api语法如何使用"><a href="#兼容高版本的浏览器-，新api语法如何使用" class="headerlink" title="兼容高版本的浏览器 ，新api语法如何使用"></a>兼容高版本的浏览器 ，新api语法如何使用</h2><p>在项目中，常遇到有些新增api不能正常转化js语法，<br>babel 转换新的 Javascript 句法，而不转换新的 Api ，比如es6中 Generator、Set、Symbol、Promise 等全局对象，为了解决这个问题，我们使用一种叫做 Polyfill（代码填充，也可译作兼容性补丁） 的技术</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/31/Node-js/" rel="prev" title="Node.js">
+      <i class="fa fa-chevron-left"></i> Node.js
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ios-%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">ios 键盘遮挡问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IE9%E4%B8%AD%EF%BC%8C-%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%B9%B6%E7%94%A8v-for%E6%B8%B2%E6%9F%93option%E6%A0%87%E7%AD%BE%E5%87%BA%E7%8E%B0%E5%8F%AA%E6%98%BE%E7%A4%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AD%97%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">IE9中， 请求服务器数据并用v-for渲染option标签出现只显示第一个字的问题  *****</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E5%88%A4%E6%96%AD%E6%97%B6%E6%9C%BA%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">vue自定义指令判断时机问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mounted%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E4%B8%AD%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E5%AF%BC%E8%87%B4%E9%A1%B5%E9%9D%A2%E9%97%AA%E5%B1%8F%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">mounted钩子函数中请求数据导致页面闪屏问题 ****</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8forEach%E9%81%8D%E5%8E%86NodeList%EF%BC%8Cie%E6%8A%A5%E9%94%99%E2%80%9Cnodelist%E4%B8%BA%E5%AF%B9%E8%B1%A1%EF%BC%8C%E4%B8%8D%E6%94%AF%E6%8C%81forEach%E5%B1%9E%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">用forEach遍历NodeList，ie报错“nodelist为对象，不支持forEach属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3%EF%BC%9A-postman%E5%8F%AF%E4%BB%A5%E6%94%B6%E5%88%B0%E6%95%B0%E6%8D%AE%EF%BC%8Caxios%E6%94%B6%E4%B8%8D%E5%88%B0-%E8%BF%99%E6%98%AF%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F%EF%BC%9F%EF%BC%9F%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">数据接口： postman可以收到数据，axios收不到 这是为什么？？？？ **</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E9%AB%98%E7%89%88%E6%9C%AC%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8-%EF%BC%8C%E6%96%B0api%E8%AF%AD%E6%B3%95%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">兼容高版本的浏览器 ，新api语法如何使用</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
