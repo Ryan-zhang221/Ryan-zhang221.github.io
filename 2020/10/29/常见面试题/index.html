@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；123456789101112131415161718192021.box &amp;#123;  width: 200px;  height: 200px;  background: red;  position: absolute;  left: 50%;  top: 50%;  margin-left: -100px;  marg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.居中、双飞翼、清除浮动">
+<meta property="og:url" content="http://example.com/2020/10/29/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；123456789101112131415161718192021.box &amp;#123;  width: 200px;  height: 200px;  background: red;  position: absolute;  left: 50%;  top: 50%;  margin-left: -100px;  marg">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-29T14:09:52.000Z">
+<meta property="article:modified_time" content="2020-11-22T05:06:35.539Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/10/29/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>1.居中、双飞翼、清除浮动 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/29/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1.居中、双飞翼、清除浮动
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-10-29 22:09:52" itemprop="dateCreated datePublished" datetime="2020-10-29T22:09:52+08:00">2020-10-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-22 13:06:35" itemprop="dateModified" datetime="2020-11-22T13:06:35+08:00">2020-11-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一个200-200的div在不同分辨率屏幕上下左右居中，用css实现；"><a href="#一个200-200的div在不同分辨率屏幕上下左右居中，用css实现；" class="headerlink" title="一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；"></a>一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  background: red;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left: 50%;</span><br><span class="line">  top: 50%;</span><br><span class="line">  margin-left: -100px;</span><br><span class="line">  margin-top: -100px;</span><br><span class="line">&#125;</span><br><span class="line">.box &#123;</span><br><span class="line">  width: 200px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  background: blue;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局"><a href="#写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局" class="headerlink" title="写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局"></a>写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;main&#39;&gt;</span><br><span class="line">  &lt;div class&#x3D;&#39;container&#39;&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;content&#39;&gt;中间&lt;&#x2F;div&gt;  </span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div class&#x3D;&#39;left&#39;&gt;左边&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div class&#x3D;&#39;right&#39;&gt;右边&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">  .main&gt;div&#123;</span><br><span class="line">    float: left;</span><br><span class="line">  &#125;</span><br><span class="line">  .container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">  .content&#123;</span><br><span class="line">    background: red;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">    margin-right: 200px;</span><br><span class="line">  &#125;</span><br><span class="line">  .left&#123;</span><br><span class="line">    background: pink;</span><br><span class="line">    width: 200px;</span><br><span class="line">    margin-left: -100%;</span><br><span class="line">  &#125;</span><br><span class="line">  .right&#123;</span><br><span class="line">    background: blue;</span><br><span class="line">    width: 200px;</span><br><span class="line">    margin-left: -200px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="清除浮动的几种方法"><a href="#清除浮动的几种方法" class="headerlink" title="清除浮动的几种方法"></a>清除浮动的几种方法</h2><blockquote>
+<p>当父元素包裹几个子元素时，如果子元素加了浮动，父元素的高度就发生了塌陷，此时需要清除浮动来解决</p>
+</blockquote>
+<ul>
+<li>在父元素里面添加一个盒子，让其clear:both; 缺点是多了一个div盒子</li>
+<li>给父元素加入overflow:hidden;</li>
+<li>最常用的给父元素加一个伪类：父元素：after{content:’’; clear:both; display:table;}<h2 id="行内元素有哪些？块级元素有哪些？"><a href="#行内元素有哪些？块级元素有哪些？" class="headerlink" title="行内元素有哪些？块级元素有哪些？"></a>行内元素有哪些？块级元素有哪些？</h2></li>
+<li>行内：a b span input</li>
+<li>块级：div ul li p h1 dl 独占一行的</li>
+<li>空：br hr</li>
+</ul>
+<h2 id="css的盒子模型"><a href="#css的盒子模型" class="headerlink" title="css的盒子模型"></a>css的盒子模型</h2><ul>
+<li>margin &gt; border &gt; padding &gt; content</li>
+</ul>
+<h2 id="css选择符有哪些？哪些属性可以继承？优先级怎么算？"><a href="#css选择符有哪些？哪些属性可以继承？优先级怎么算？" class="headerlink" title="css选择符有哪些？哪些属性可以继承？优先级怎么算？"></a>css选择符有哪些？哪些属性可以继承？优先级怎么算？</h2><blockquote>
+<p>css选择符：</p>
+</blockquote>
+<ul>
+<li>id #</li>
+<li>class .</li>
+<li>标签 div、p</li>
+<li>相邻 ul+div</li>
+<li>子 ul&gt;li</li>
+<li>后代 ul li</li>
+<li>通配 *</li>
+<li>属性 a[href=’xxx’]</li>
+<li>伪类 a:after a:hover<blockquote>
+<p>css中哪些可以继承</p>
+</blockquote>
+</li>
+<li>color</li>
+<li>font-size<blockquote>
+<p>css选择器优先级问题（从高到低）</p>
+</blockquote>
+</li>
+<li>!important</li>
+<li>行内样式</li>
+<li>id</li>
+<li>class</li>
+<li>标签</li>
+<li>通配</li>
+<li>浏览器自定义或继承</li>
+</ul>
+<h2 id="css3新增伪类举例"><a href="#css3新增伪类举例" class="headerlink" title="css3新增伪类举例"></a>css3新增伪类举例</h2><ul>
+<li>:after 在元素内部最前添加内容</li>
+<li>:before 在元素内部最后添加内容</li>
+<li>:nth-child(n) 匹配父元素下指定子元素，在所有子元素中排序第n</li>
+<li>:nth-last-child(n) 匹配父元素下指定子元素，在所有子元素中排序第n，从后向前数</li>
+<li>:nth-child(odd)</li>
+<li>:nth-child(even)</li>
+<li>:nth-of-type(n) 匹配父元素下指定子元素，在同类子元素中排序第n</li>
+<li>:first-of-type  </li>
+</ul>
+<h2 id="flex布局的应用场景"><a href="#flex布局的应用场景" class="headerlink" title="flex布局的应用场景"></a>flex布局的应用场景</h2><blockquote>
+<p>在开发中使用flex代替了之前的百分比布局，给父元素加上display:flex之后，子元素就默认为row排列了，可以修改为flex-direction:column;</p>
+</blockquote>
+<ul>
+<li>用弹性盒实现圣杯布局<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&#39;container&#39;&gt;</span><br><span class="line">  &lt;header&gt;顶部&lt;&#x2F;header&gt;</span><br><span class="line">  &lt;section&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;left&#39;&gt;中间左边&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;content&#39;&gt;中间中间&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&#39;right&#39;&gt;中间右边&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;section&gt;</span><br><span class="line">  &lt;footer&gt;底部&lt;&#x2F;footer&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">  display:flex;</span><br><span class="line">  flex-direction:column;</span><br><span class="line">  height:100vh;</span><br><span class="line">&#125;</span><br><span class="line">header &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">section &#123;</span><br><span class="line">  background:green;</span><br><span class="line">  flex:1;</span><br><span class="line">  display:flex;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">  background:red;</span><br><span class="line">&#125;</span><br><span class="line">.left .right &#123;</span><br><span class="line">  background:yellow;</span><br><span class="line">  flex:0 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.content &#123;</span><br><span class="line">  background:pink;</span><br><span class="line">  flex:1;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"><a href="#常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧" class="headerlink" title="常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧"></a>常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</h2><blockquote>
+<p>浏览器内核</p>
+</blockquote>
+<ul>
+<li>Trident: ie/360/搜狗浏览器</li>
+<li>Geoko: 火狐</li>
+<li>Presto: 欧朋opera</li>
+<li>Webkit: 谷歌/safari<blockquote>
+<p>浏览器的兼容</p>
+</blockquote>
+</li>
+<li>解决浏览器内外</li>
+</ul>
+<h2 id="html5标签有什么新特性"><a href="#html5标签有什么新特性" class="headerlink" title="html5标签有什么新特性"></a>html5标签有什么新特性</h2><ul>
+<li>添加了canvas画图</li>
+<li>新增语义化标签</li>
+<li>本地存储localStorage，sessionStorage，webSocket</li>
+<li>表单控件</li>
+</ul>
+<h2 id="如何处理html5标签的浏览器兼容问题？"><a href="#如何处理html5标签的浏览器兼容问题？" class="headerlink" title="如何处理html5标签的浏览器兼容问题？"></a>如何处理html5标签的浏览器兼容问题？</h2><blockquote>
+<p>header和footer标签在ie6.7中不支持</p>
+</blockquote>
+<ul>
+<li>ie支持document.createElement(),默认样式需要自己写</li>
+<li>html5shiv，这是一个google的一个html5.js文件，引入到head中，再在css中加入一段代码即可在ie中使用语义化标签</li>
+</ul>
+<h2 id="HBuilder"><a href="#HBuilder" class="headerlink" title="HBuilder"></a>HBuilder</h2><blockquote>
+<p>HBuilder运行一个移动的app特别好用，也比较简单</p>
+</blockquote>
+<ul>
+<li>把手机连接到电脑</li>
+<li>打开hbuilder，点击基座运行</li>
+<li>会下载一个hbuilder在手机上</li>
+</ul>
+<h2 id="关闭ios键盘首字母大写"><a href="#关闭ios键盘首字母大写" class="headerlink" title="关闭ios键盘首字母大写"></a>关闭ios键盘首字母大写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; autocapitalize&#x3D;&quot;off&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ios键盘点击默认弹出数字"><a href="#ios键盘点击默认弹出数字" class="headerlink" title="ios键盘点击默认弹出数字"></a>ios键盘点击默认弹出数字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;tel&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ios按钮默认高亮部分删除"><a href="#ios按钮默认高亮部分删除" class="headerlink" title="ios按钮默认高亮部分删除"></a>ios按钮默认高亮部分删除</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-tap-highlight-color: rgba(0,0,0,0);</span><br></pre></td></tr></table></figure>
+
+<h2 id="html标签中的文本加粗，下标，居中，字体加粗"><a href="#html标签中的文本加粗，下标，居中，字体加粗" class="headerlink" title="html标签中的文本加粗，下标，居中，字体加粗"></a>html标签中的文本加粗，下标，居中，字体加粗</h2><ul>
+<li>文本加粗: strong</li>
+<li>下标: sub</li>
+<li>上标: sup</li>
+<li>居中: center</li>
+<li>字体加粗: font</li>
+</ul>
+<h2 id="Doctype几种类型，什么作用？"><a href="#Doctype几种类型，什么作用？" class="headerlink" title="Doctype几种类型，什么作用？"></a>Doctype几种类型，什么作用？</h2><blockquote>
+<p>必须位于文档之前，也就是html标签前，告诉浏览器文档使用哪种html或者xhtml<br>几种Doctype类型</p>
+</blockquote>
+<ul>
+<li>严格版本</li>
+<li>过滤版本</li>
+<li>基于框架的html版本</li>
+</ul>
+<h2 id="iframe的优缺点"><a href="#iframe的优缺点" class="headerlink" title="iframe的优缺点"></a>iframe的优缺点</h2><blockquote>
+<p>优点</p>
+</blockquote>
+<ul>
+<li>可以重复调用</li>
+<li>重载页面时不需要加载整个页面</li>
+<li>修改简单，维护性好<blockquote>
+<p>缺点</p>
+</blockquote>
+</li>
+<li>兼容性不好</li>
+<li>浏览器后退按钮无效</li>
+<li>阻塞页面的onload事件</li>
+<li>多框架页面，会增加很多的http请求</li>
+</ul>
+<h2 id="div-css相比较table（tr-td）有什么优点"><a href="#div-css相比较table（tr-td）有什么优点" class="headerlink" title="div+css相比较table（tr td）有什么优点"></a>div+css相比较table（tr td）有什么优点</h2><ul>
+<li>布局灵活</li>
+<li>修改较为方便</li>
+<li>seo 较好</li>
+</ul>
+<h2 id="typeof-类型"><a href="#typeof-类型" class="headerlink" title="typeof 类型"></a>typeof 类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 返回Object类型的</span><br><span class="line">console.log( typeof &#123;&#125; );</span><br><span class="line">console.log( typeof [] );</span><br><span class="line">console.log( typeof null );</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 返回number类型的</span><br><span class="line">console.log( typeof 3 );</span><br><span class="line">console.log( typeof NaN );</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 返回undefined类型的</span><br><span class="line">console.log( typeof undefined );</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 返回函数function类型的</span><br><span class="line">console.log( typeof function demo()&#123;&#125; );</span><br><span class="line">console.log( typeof Object ); &#x2F;&#x2F; 注意这里返回function</span><br></pre></td></tr></table></figure>
+
+<h2 id="几秒输出几（异步，闭包）-这里有问题"><a href="#几秒输出几（异步，闭包）-这里有问题" class="headerlink" title="几秒输出几（异步，闭包）???这里有问题"></a>几秒输出几（异步，闭包）???这里有问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(var i&#x3D;0; i&lt;3; i++&gt;)&#123;</span><br><span class="line">  setTimeout(function()&#123;</span><br><span class="line">    alert(i); &#x2F;&#x2F; 1秒 弹出3</span><br><span class="line">  &#125;,1000*i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果这里将var改为let，就会间隔1秒弹出0，1，2</li>
+</ul>
+<h2 id="for循环的执行顺序"><a href="#for循环的执行顺序" class="headerlink" title="for循环的执行顺序"></a>for循环的执行顺序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x;</span><br><span class="line">  for(var i&#x3D;0,j&#x3D;0;i&lt;6,j&lt;10;i++,j++)&#123;</span><br><span class="line">    x&#x3D;i+j;</span><br><span class="line">  &#125;</span><br><span class="line">alert(x); &#x2F;&#x2F; 18</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for循环执行顺序是先执行起始条件，再判断，执行大括号中的逻辑，最后执行自增操作；</li>
+<li>如果有两个变量，终止条件进行判断时，只要有一个条件满足，还是会继续执行的，不会终止循环，切记！！！</li>
+</ul>
+<h2 id="作用域和变量提升"><a href="#作用域和变量提升" class="headerlink" title="作用域和变量提升"></a>作用域和变量提升</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var bar &#x3D; 1;</span><br><span class="line">  function test()&#123;</span><br><span class="line">    console.log(bar); &#x2F;&#x2F; undefined</span><br><span class="line">    var bar &#x3D; 2;</span><br><span class="line">    console.log(bar); &#x2F;&#x2F; 2</span><br><span class="line">  &#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这道题test函数中第一行打印bar时，内部的bar用了var，该变量已经进行了变量提升了，所以可以找到<br>var，只是代码还没有执行到var bar = 2;所以bar没有被赋值，故为undefined;</li>
+<li>第二处已经进行了赋值，所以打印为2；</li>
+<li>注意函数在自身作用域找变量，没有找到才会去外部作用域找，都找不到才会报错</li>
+<li>函数执行时的优先级问题：变量&gt;函数&gt;参数&gt;变量提升<blockquote>
+<p>这里要注意这个问题</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test()&#123;</span><br><span class="line">  console.log(bar);</span><br><span class="line">  bar &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure></li>
+<li>此时会报错，没有加var，又在console后面执行的话，不会变量提升；</li>
+<li>但是如果两行代码交换顺序，但是依然没有var，不会报错，因为，此时默认在bar前面加了一个window，它变成了全局变量，函数test()在自身找不到，但是可以在全局作用域中找到，故不会报错；</li>
+</ul>
+<h2 id="当调用发生冲突的时候优先级问题"><a href="#当调用发生冲突的时候优先级问题" class="headerlink" title="当调用发生冲突的时候优先级问题"></a>当调用发生冲突的时候优先级问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var foo &#x3D; function()&#123;console.log(1)&#125;</span><br><span class="line">function foo()&#123;console.log(2)&#125;</span><br><span class="line">foo(); &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>变量的优先级要高于函数</li>
+</ul>
+<h2 id="变量提升-作用域链"><a href="#变量提升-作用域链" class="headerlink" title="变量提升+作用域链"></a>变量提升+作用域链</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function c() &#123;</span><br><span class="line">  var b &#x3D; 1;</span><br><span class="line">  function a()&#123;</span><br><span class="line">    console.log(b); &#x2F;&#x2F; undefined</span><br><span class="line">    var b&#x3D;2;</span><br><span class="line">    console.log(b); &#x2F;&#x2F; 2</span><br><span class="line">  &#125;</span><br><span class="line">  a();</span><br><span class="line">  console.log(b); &#x2F;&#x2F; 1</span><br><span class="line">&#125;</span><br><span class="line">c();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>本题主要注意的是，函数的执行过程，以及变量提升，作用域变量的查找顺序（从内向外）</li>
+</ul>
+<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Foo()&#123;</span><br><span class="line">  getName &#x3D; function()&#123;alert(1)&#125; &#x2F;&#x2F; 这里相当于window.getName</span><br><span class="line">  return this;&#x2F;&#x2F; 这里的this指向window</span><br><span class="line">&#125;</span><br><span class="line">Foo.getName &#x3D; function()&#123;alert(2)&#125;</span><br><span class="line">Foo.prototype.getName &#x3D; function()&#123;alert(3)&#125;</span><br><span class="line">var getName &#x3D; function()&#123;alert(4)&#125;</span><br><span class="line">function getName()&#123;alert(5)&#125;</span><br><span class="line"></span><br><span class="line">Foo.getName(); &#x2F;&#x2F; 2</span><br><span class="line">getName(); &#x2F;&#x2F; 4</span><br><span class="line">Foo().getName(); &#x2F;&#x2F; 1</span><br><span class="line">getName(); &#x2F;&#x2F; 1</span><br><span class="line">new Foo().getName(); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<h2 id="用es5和es6分别封装一个数组去重的方法"><a href="#用es5和es6分别封装一个数组去重的方法" class="headerlink" title="用es5和es6分别封装一个数组去重的方法"></a>用es5和es6分别封装一个数组去重的方法</h2><blockquote>
+<p>ES5</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [5,&#39;5&#39;,5,2,&#39;2&#39;,1,3];</span><br><span class="line"></span><br><span class="line">function unique (arr)&#123;</span><br><span class="line">  var brr &#x3D; [],</span><br><span class="line">      obj &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  for(var i&#x3D;0;i&lt;arr.length;i++)&#123;</span><br><span class="line">    if(!obj[arr[i]])&#123;</span><br><span class="line">      obj[arr[i]] &#x3D; true;</span><br><span class="line">      brr.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return brr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(unique(arr)); &#x2F;&#x2F; [5,2,1,3]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ES6使用new Set()去重，但是同值不同类型不能去重</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [5,&#39;5&#39;,5,2,&#39;2&#39;,1,3];</span><br><span class="line">var set &#x3D; new Set(arr);</span><br><span class="line">console.log(set); &#x2F;&#x2F; [5,&#39;5&#39;,2,&#39;2&#39;,1,3]</span><br></pre></td></tr></table></figure>
+
+<h2 id="封装一个深拷贝方法"><a href="#封装一个深拷贝方法" class="headerlink" title="封装一个深拷贝方法"></a>封装一个深拷贝方法</h2><blockquote>
+<p>浅拷贝：只复制一层对象，当对象的属性是引用类型时，实际上只是复制了其引用，当引用指向的值发生了变化的时候，原对象的属性值也会跟着变化，互相影响，几种浅拷贝的方法如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 方法一</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">  name: &#39;zhangsan&#39;,</span><br><span class="line">  age: &#39;23&#39;,</span><br><span class="line">  eat()&#123;</span><br><span class="line">    console.log(&#39;我会吃饭&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">function copy(obj)&#123;</span><br><span class="line">  var obj1 &#x3D; &#123;&#125;;</span><br><span class="line">  for(var k in obj)&#123;</span><br><span class="line">    obj1[k] &#x3D; obj[k];</span><br><span class="line">  &#125;</span><br><span class="line">  return obj1;</span><br><span class="line">&#125;</span><br><span class="line">obj.eat(); &#x2F;&#x2F; 我会吃饭</span><br><span class="line">copy(obj).eat(); &#x2F;&#x2F; 我会吃饭</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 方法二</span><br><span class="line">obj2 &#x3D; Object.assign(obj);</span><br><span class="line">console.log(obj2);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>深拷贝：创建新的对象，并把原对象的所有属性都深拷贝到新对象，如果原属性中有对象，同样也会在新对象中创建对象并拷贝所有属性，有一个我拷贝一个（老塞拉斯了）完成后新对象和旧对象就是完全独立的两个对象，互不影响。几种深拷贝的方法如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var obj &#x3D; &#123;</span><br><span class="line">  name: &#39;zhangsan&#39;,</span><br><span class="line">  age: 23,</span><br><span class="line">  eat()&#123;</span><br><span class="line">    console.log(&#39;我会吃饭&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var obj1 &#x3D; JSON.parse(JSON.stringify(obj))</span><br><span class="line"></span><br><span class="line">obj.name &#x3D; &#39;lisi&#39;;</span><br><span class="line">console.log(obj.name,obj1.name);&#x2F;&#x2F; lisi zhangsan</span><br></pre></td></tr></table></figure>
+
+<h2 id="身份证的正则表达式"><a href="#身份证的正则表达式" class="headerlink" title="身份证的正则表达式"></a>身份证的正则表达式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg1 &#x3D; &#x2F;^\d&#123;17&#125;[X\d]$&#x2F;;</span><br><span class="line">var str1 &#x3D; &#39;123456799811266815&#39;</span><br><span class="line">console.log(reg1.test(str1));</span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域问题"><a href="#作用域问题" class="headerlink" title="作用域问题"></a>作用域问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(var i&#x3D;0;i&lt;5;i++)&#123;</span><br><span class="line">  setTimeout(()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(i); &#x2F;&#x2F; 5</span><br><span class="line">  &#125;,1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量提升，存储问题"><a href="#变量提升，存储问题" class="headerlink" title="变量提升，存储问题"></a>变量提升，存储问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; &#123;</span><br><span class="line">  a:&#39;hellow&#39;</span><br><span class="line">&#125;</span><br><span class="line">var obj2 &#x3D; obj1;</span><br><span class="line">obj2.a &#x3D; &#39;world&#39;;</span><br><span class="line">console.log(obj1);  &#x2F;&#x2F; &#123;a:&#39;world&#39;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 匿名函数的自执行</span><br><span class="line">(function()&#123;</span><br><span class="line">  console.log(a); &#x2F;&#x2F; undefined</span><br><span class="line">  var a &#x3D; 1;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<h2 id="33"><a href="#33" class="headerlink" title="33"></a>33</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Hero()&#123;</span><br><span class="line">  this.name &#x3D; &#39;nihao&#39;;</span><br><span class="line">  this.sayMe &#x3D; function()&#123;</span><br><span class="line">    alert(&#39;this is nihao&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Hero.prototype.name &#x3D; &#39;hellow&#39;;</span><br><span class="line">Hero.prototype.sayMe &#x3D; function()&#123;</span><br><span class="line">  alert(&#39;this is hellow&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var hero &#x3D; new Hero();</span><br><span class="line">console.log(hero.name); &#x2F;&#x2F; nihao</span><br><span class="line">console.log(hero.sayMe); &#x2F;&#x2F; function()&#123;alert(&#39;this is nihao&#39;)&#125;</span><br><span class="line">console.log(hero.__proto__.name); &#x2F;&#x2F; hellow</span><br><span class="line">console.log(hero.__proto__.sayMe()); &#x2F;&#x2F; this is hellow</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造函数中的和属性和方法和原型中的属性和方法是不一样的(名称一样也是不一样的)，两者在不同的作用域中，如果调用该属性或者方法的话，会首先在构造函数中找，然后再去原型中找。</li>
+</ul>
+<h2 id="解释一下如下问题"><a href="#解释一下如下问题" class="headerlink" title="解释一下如下问题"></a>解释一下如下问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(0.1+0.2); &#x2F;&#x2F; 0.30000000000000004</span><br><span class="line">console.log(0.1+0.2 &#x3D;&#x3D; 0.3); &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+<ul>
+<li>js只有一种数值类型，没有浮点类型，0.1和0.2转换为10进制</li>
+<li>还有一个网站专门说这个事情的</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Foo()&#123;</span><br><span class="line">  var i&#x3D;0;</span><br><span class="line">  return function()&#123;</span><br><span class="line">    console.log(i++);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var f1 &#x3D; Foo();</span><br><span class="line">var f2 &#x3D; Foo();</span><br><span class="line">f1(); &#x2F;&#x2F; 0</span><br><span class="line">f1(); &#x2F;&#x2F; 1</span><br><span class="line">f2(); &#x2F;&#x2F; 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>首先注意f1和f2是两个不同的函数，互不影响；</li>
+<li>i++和++i的共同点都是执行完之后i自增1，区别就是当前值有没有变化，i++当前值没变，++i当前值已经+1；</li>
+<li>两次调用f1()其中由于有闭包的存在，i值会储存，所以第二次调用在基础值上+1；</li>
+</ul>
+<h2 id="a标签"><a href="#a标签" class="headerlink" title="a标签"></a>a标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&#39;http:&#x2F;&#x2F;www.xxxx.com.cn&#39; target&#x3D;&#39;_blank&#39;&gt;你好&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中target规定在何处打开链接文档</li>
+</ul>
+<h2 id="数组方法"><a href="#数组方法" class="headerlink" title="数组方法"></a>数组方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a1 &#x3D; [1,2,12];</span><br><span class="line">var a2 &#x3D; [4,23];</span><br><span class="line">console.log(a1.concat(a2)); &#x2F;&#x2F; [1,2,12,4,23]</span><br><span class="line">console.log(a1.sort()); &#x2F;&#x2F; [1,12,2]</span><br><span class="line">alert(a1.join(&quot;;&quot;)); &#x2F;&#x2F; 1;12;2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里要注意的是调用concat方法后是不会改变原数组a1的，除非将拼接后的数组重新赋值给a1；</li>
+<li>sort方法排序时注意是按照每一位上的数字大小排列的；</li>
+<li>join方法是用括号中的字符来分割数组的；</li>
+</ul>
+<h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="==和===的区别"></a>==和===的区别</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#39;10&#39;;</span><br><span class="line">var b &#x3D; 10;</span><br><span class="line">if(a &#x3D;&#x3D; b)&#123;</span><br><span class="line">  alert(&#39;equal&#39;); &#x2F;&#x2F; 应该这个弹出</span><br><span class="line">&#125;</span><br><span class="line">if(a &#x3D;&#x3D;&#x3D; b)&#123;</span><br><span class="line">  alert(&#39;same&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>双等号可以判断不同类型的数值比较；</li>
+<li>三等号要成立必须要是同类型的；</li>
+</ul>
+<h2 id="判断是否为数组的方法"><a href="#判断是否为数组的方法" class="headerlink" title="判断是否为数组的方法"></a>判断是否为数组的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 方法一</span><br><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line"></span><br><span class="line">function isArray(arr)&#123;</span><br><span class="line">  if(arr instanceof Array)&#123;</span><br><span class="line">    console.log(&#39;ok&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">isArray(arr); &#x2F;&#x2F; ok</span><br><span class="line">&#x2F;&#x2F; 方法二</span><br><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line"></span><br><span class="line">function isArray(arr)&#123;</span><br><span class="line">  if(arr.__proto__.constructor &#x3D;&#x3D;&#x3D; Array)&#123;</span><br><span class="line">    console.log(&#39;ok&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">isArray(arr); &#x2F;&#x2F; ok</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="数组方法-1"><a href="#数组方法-1" class="headerlink" title="数组方法"></a>数组方法</h2><ul>
+<li>push 末尾添加</li>
+<li>pop 末尾删除</li>
+<li>shift 首项删除</li>
+<li>unshift 首项添加</li>
+</ul>
+<h2 id="DOM操作-如何添加，移除，移动，插入，复制，创建，查找节点"><a href="#DOM操作-如何添加，移除，移动，插入，复制，创建，查找节点" class="headerlink" title="DOM操作-如何添加，移除，移动，插入，复制，创建，查找节点"></a>DOM操作-如何添加，移除，移动，插入，复制，创建，查找节点</h2><ul>
+<li>添加 appendChild</li>
+<li>移除 removeChild</li>
+<li>移动 replaceChild</li>
+<li>插入 insertBefore</li>
+<li>复制 clone</li>
+<li>创建 createElement</li>
+<li>查找 getElementById…</li>
+</ul>
+<h2 id="如何阻止事件冒泡和默认事件"><a href="#如何阻止事件冒泡和默认事件" class="headerlink" title="如何阻止事件冒泡和默认事件"></a>如何阻止事件冒泡和默认事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var e &#x3D; window.event || e;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 阻止事件冒泡</span><br><span class="line">if(e.stopPropagation)&#123;</span><br><span class="line">  e.stopPropagation(); &#x2F;&#x2F; w3c的</span><br><span class="line">&#125;else&#123;</span><br><span class="line">  e.cancelBubble &#x3D; true; &#x2F;&#x2F; 处理ie的</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 阻止默认行为</span><br><span class="line">if(e.preventDefault)&#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">  e.returnValue&#x3D;false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="new操作符到底干了什么事？"><a href="#new操作符到底干了什么事？" class="headerlink" title="new操作符到底干了什么事？"></a>new操作符到底干了什么事？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj &#x3D; new Fun();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建了一个对象obj</li>
+<li>进行原型赋值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.__proto__ &#x3D; Fun.protoType;</span><br></pre></td></tr></table></figure></li>
+<li>改变this的指向，将Fun中的this指向了obj对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fun.call(obj);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="js延迟加载方式有哪些？"><a href="#js延迟加载方式有哪些？" class="headerlink" title="js延迟加载方式有哪些？"></a>js延迟加载方式有哪些？</h2><ul>
+<li>添加async属性</li>
+<li>添加 defer=’defer’属性</li>
+<li>定时器setTimeout(function(){},1000)</li>
+</ul>
+<h2 id="严格模式及优缺点"><a href="#严格模式及优缺点" class="headerlink" title="严格模式及优缺点"></a>严格模式及优缺点</h2><ul>
+<li>对代码的写法更加严格，解决了js的一些怪异行为；</li>
+<li>变量声明禁止a=1;禁止this关键字指向全局对象；不能有重名的函数；等</li>
+<li>优点：代码更加严谨，检测代码，压缩时节省文件大小；</li>
+<li>缺点：阻塞后面代码的运行，压缩出现问题；</li>
+</ul>
+<h2 id="执行优先级问题"><a href="#执行优先级问题" class="headerlink" title="执行优先级问题"></a>执行优先级问题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof fn);</span><br><span class="line">function fn ()&#123;&#125;;</span><br><span class="line">var fn;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数优先级要高于变量提升，这里的var fn 是属于变量提升；</li>
+</ul>
+<h2 id="这个题有点麻烦"><a href="#这个题有点麻烦" class="headerlink" title="这个题有点麻烦"></a>这个题有点麻烦</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function fun(n,o)&#123;</span><br><span class="line">  console.log(o);</span><br><span class="line">  return &#123;</span><br><span class="line">    fun:function(m)&#123;</span><br><span class="line">      return fun(m,n);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">var a &#x3D; fun(0);&#x2F;&#x2F; undefined</span><br><span class="line">a.fun(1); &#x2F;&#x2F; 0</span><br><span class="line">a.fun(2); &#x2F;&#x2F; 0</span><br><span class="line">a.fun(3); &#x2F;&#x2F; 0</span><br><span class="line">var b &#x3D; fun(0).fun(1).fun(2).fun(3); &#x2F;&#x2F; undefined 0 1 2</span><br><span class="line">var c &#x3D; fun(0).fun(1); &#x2F;&#x2F; undefined 0</span><br><span class="line">c.fun(2); &#x2F;&#x2F; 1</span><br><span class="line">c.fun(3); &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="js没有块级作用域"><a href="#js没有块级作用域" class="headerlink" title="js没有块级作用域"></a>js没有块级作用域</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var name &#x3D;&#39;World!&#39;;</span><br><span class="line">(function()&#123;</span><br><span class="line">  if(typeof name &#x3D;&#x3D;&#x3D; &#39;undefined&#39;)&#123;</span><br><span class="line">    var name &#x3D; &#39;jack&#39;;</span><br><span class="line">    console.log(&#39;Goodbye&#39;+name); &#x2F;&#x2F; Goodbye jack</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    console.log(&#39;hello&#39;+name); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这道题的问题在于这个自执行函数，js中是没有块级作用域的，所以在查找name时会首先在这个自执行函数中找，其中var name = ‘jack’;是变量提升还没有赋值，所以name此时就是undefined，所以执行if里面的语句</li>
+</ul>
+<h2 id="b继承a的方法"><a href="#b继承a的方法" class="headerlink" title="b继承a的方法"></a>b继承a的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">  this.name &#x3D; &#39;张三&#39;;</span><br><span class="line">  this.age &#x3D; 12;</span><br><span class="line">  this.arr &#x3D; [2,4,5,6,7,87,8];</span><br><span class="line">&#125;</span><br><span class="line">a.prototype.run &#x3D; function()&#123;</span><br><span class="line">  console.log(&#39;你好&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function b ()&#123;&#125;</span><br><span class="line"></span><br><span class="line">b.prototype &#x3D; new a();</span><br><span class="line"></span><br><span class="line">var obj &#x3D; new b();</span><br><span class="line">obj.run(); &#x2F;&#x2F; 你好</span><br><span class="line">console.log(obj.arr[5]); &#x2F;&#x2F; 87</span><br></pre></td></tr></table></figure>
+
+<h2 id="请编写一个js函数parseQueryString，他的用途是把URL参数解析为一个对象，如：var-url-“http-witmax-cn-index-php-key0-0-amp-key1-1-amp-key2-2-quot"><a href="#请编写一个js函数parseQueryString，他的用途是把URL参数解析为一个对象，如：var-url-“http-witmax-cn-index-php-key0-0-amp-key1-1-amp-key2-2-quot" class="headerlink" title="请编写一个js函数parseQueryString，他的用途是把URL参数解析为一个对象，如：var url = “http://witmax.cn/index.php?key0=0&amp;key1=1&amp;key2=2&quot;"></a>请编写一个js函数parseQueryString，他的用途是把URL参数解析为一个对象，如：var url = “<a target="_blank" rel="noopener" href="http://witmax.cn/index.php?key0=0&amp;key1=1&amp;key2=2&quot;">http://witmax.cn/index.php?key0=0&amp;key1=1&amp;key2=2&quot;</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var url &#x3D; &#39;http:&#x2F;&#x2F;witmax.cn&#x2F;index.php?key0&#x3D;0&amp;key1&#x3D;1&amp;key2&#x3D;2&#39;</span><br><span class="line"></span><br><span class="line">function parseQueryString(url)&#123;</span><br><span class="line">  var res &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  var str &#x3D; url.split(&#39;?&#39;);</span><br><span class="line">  str1 &#x3D; str[1];</span><br><span class="line">  str2 &#x3D; str1.split(&#39;&amp;&#39;);</span><br><span class="line">  for(var i&#x3D;0;i&lt;str2.length;i++)&#123;</span><br><span class="line">    var arr &#x3D; str2[i].split(&#39;&#x3D;&#39;);</span><br><span class="line">    res[arr[0]] &#x3D; arr[1];</span><br><span class="line">  &#125;</span><br><span class="line">  return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(parseQueryString(url));</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断字符串中的出现次数最多的字符，并统计次数"><a href="#判断字符串中的出现次数最多的字符，并统计次数" class="headerlink" title="判断字符串中的出现次数最多的字符，并统计次数"></a>判断字符串中的出现次数最多的字符，并统计次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var str &#x3D; &#39;aaabbbffffccccccsdddssddsdgfgdfsfgdf&#39;;</span><br><span class="line">var obj &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">for (var i&#x3D;0;i&lt;str.length;i++)&#123;</span><br><span class="line">  var chart &#x3D; str.charAt(i);</span><br><span class="line">  if(obj[chart])&#123;</span><br><span class="line">    obj[chart]++;</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    obj[chart]&#x3D;1;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var max &#x3D; 0; &#x2F;&#x2F; 次数</span><br><span class="line">var maxChart &#x3D; null; &#x2F;&#x2F; 字符</span><br><span class="line">for(var k in obj)&#123;</span><br><span class="line">  if(max&lt;obj[k])&#123;</span><br><span class="line">    max&#x3D;obj[k];</span><br><span class="line">    maxChart&#x3D;k;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(&#39;出现次数&#39;+max);</span><br><span class="line">console.log(&#39;谁出现最多?&#39;+maxChart);</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS判断变量为数组有哪些方法？JS有哪些创建对象的方式？"><a href="#JS判断变量为数组有哪些方法？JS有哪些创建对象的方式？" class="headerlink" title="JS判断变量为数组有哪些方法？JS有哪些创建对象的方式？"></a>JS判断变量为数组有哪些方法？JS有哪些创建对象的方式？</h2><ul>
+<li>第一问之前说过<blockquote>
+<p>创建对象的方式</p>
+</blockquote>
+</li>
+<li>直接使用{}|new Object()</li>
+<li>构造函数形式：var a = new Phone();其中Phone是一个构造函数；</li>
+<li>var obj = Object.create(Array.prototype);</li>
+</ul>
+<h2 id="如何判断图片加载完成？"><a href="#如何判断图片加载完成？" class="headerlink" title="如何判断图片加载完成？"></a>如何判断图片加载完成？</h2><ul>
+<li>complete属性可以判断<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var img &#x3D; document.getElementById(&#39;img&#39;);</span><br><span class="line">var timer &#x3D; setInterval(() &#x3D;&gt; &#123;</span><br><span class="line">  if(img.complete)&#123;</span><br><span class="line">    clearInterval(timer);</span><br><span class="line">    console.log(&#39;加载完毕&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, 10);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="key的坑"><a href="#key的坑" class="headerlink" title="key的坑"></a>key的坑</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#123;&#125;;</span><br><span class="line">var b &#x3D; &#123;</span><br><span class="line">  key:&#39;a&#39;</span><br><span class="line">&#125;</span><br><span class="line">var c &#x3D; &#123;</span><br><span class="line">  key:&#39;c&#39;</span><br><span class="line">&#125;</span><br><span class="line">a[b] &#x3D; &#39;123&#39;;</span><br><span class="line">a[c] &#x3D; &#39;456&#39;;</span><br><span class="line">console.log(a[b]); &#x2F;&#x2F; 456</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里的b和c都是对象，作为属性传递给a之后由于他们两个都有key属性，所以后者就会覆盖前者<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3]</span><br><span class="line">var brr &#x3D; [1,2,3]</span><br><span class="line">var obj &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line">obj[arr] &#x3D; &#39;数组arr&#39;</span><br><span class="line">obj[brr] &#x3D; &#39;数组brr&#39;</span><br><span class="line"></span><br><span class="line">console.log(obj); &#x2F;&#x2F; &#123;1,2,3:&quot;数组brr&quot;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>当arr和brr数组一样时，将他们两个作为属性传递给对象obj，就只会出现后者的赋值，前者的赋值被覆盖；<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var arr &#x3D; &#123;</span><br><span class="line">  name:&#39;张三&#39;</span><br><span class="line">&#125;</span><br><span class="line">var brr &#x3D; &#123;</span><br><span class="line">  name:&#39;李四&#39;</span><br><span class="line">&#125;</span><br><span class="line">var obj &#x3D; &#123;&#125;</span><br><span class="line"></span><br><span class="line">obj[arr] &#x3D; &#39;张三三&#39;</span><br><span class="line">obj[brr] &#x3D; &#39;李四四&#39;</span><br><span class="line"></span><br><span class="line">console.log(obj); &#x2F;&#x2F; &#123;[object Object]: &quot;李四四&quot;&#125;</span><br></pre></td></tr></table></figure></li>
+<li>将数组变为对象后，只要两个对象的所有属性名都一样，作为参数传递的话，后者就会覆盖前者；</li>
+</ul>
+<h2 id="请解释什么是事件代理，也就是事件委托"><a href="#请解释什么是事件代理，也就是事件委托" class="headerlink" title="请解释什么是事件代理，也就是事件委托"></a>请解释什么是事件代理，也就是事件委托</h2><ul>
+<li>比如我们要给所有的ul下面的li添加事件，本身是给li添加事件，现在可以委托到ul上</li>
+<li>即使后天加进来也有效</li>
+<li>jq中很好用</li>
+</ul>
+<h2 id="说出几种js继承方式"><a href="#说出几种js继承方式" class="headerlink" title="说出几种js继承方式"></a>说出几种js继承方式</h2><ul>
+<li>原型链继承</li>
+<li>借用构造函数继承</li>
+<li>组合继承（上面两种）</li>
+<li>寄生式继承</li>
+</ul>
+<h2 id="ES6语法了解多少，const和let的区别"><a href="#ES6语法了解多少，const和let的区别" class="headerlink" title="ES6语法了解多少，const和let的区别"></a>ES6语法了解多少，const和let的区别</h2><blockquote>
+<p>let</p>
+</blockquote>
+<ul>
+<li>变量不能重复赋值；</li>
+<li>let只在其作用域中起作用，外部无法使用；</li>
+<li>不存在变量提升；</li>
+<li>不影响作用域链，内部没有找到还是会去外部作用域找；<blockquote>
+<p>const</p>
+</blockquote>
+</li>
+<li>用来定义常量，如不能修改的量；</li>
+<li>一定要赋初始值；</li>
+<li>也是块级作用域中起作用；</li>
+<li>对于const声明的数组或者对象进行修改是可以的，所以以后这两者多用const；</li>
+</ul>
+<h2 id="数据类型的隐式转换"><a href="#数据类型的隐式转换" class="headerlink" title="数据类型的隐式转换"></a>数据类型的隐式转换</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(true+1); &#x2F;&#x2F; 2 true隐式转换为1</span><br><span class="line">alert(&#39;name&#39;+true); &#x2F;&#x2F; nametrue 字符串碰见别的数据类型都是转换为字符串类型</span><br><span class="line">alert(undefined+1); &#x2F;&#x2F; NaN</span><br><span class="line">alert(typeof null); &#x2F;&#x2F; Object</span><br></pre></td></tr></table></figure>
+
+<h2 id="Websocket和ajax的区别"><a href="#Websocket和ajax的区别" class="headerlink" title="Websocket和ajax的区别"></a>Websocket和ajax的区别</h2><ul>
+<li>ajax是什么时候要用就什么时候请求后端数据；</li>
+<li>Websocket是一直连接状态；</li>
+</ul>
+<h2 id="cookie、localStorage、sessionStorage区别"><a href="#cookie、localStorage、sessionStorage区别" class="headerlink" title="cookie、localStorage、sessionStorage区别"></a>cookie、localStorage、sessionStorage区别</h2><ul>
+<li>cookie可以设置失效时间，但没有自己的存取取的方法，需要时封装，每次请求时跟随请求发送,而localStorage和sessionStorage可以有自己存取的方法例如：setItem(),getItem(),removeItem(),clear() 如：localStorage.setItem(‘属性’，值) </li>
+<li>cookie:由服务器生成，可设置失效时间，如果在浏览器端生成Cookie，默认关闭浏览器后失效，大小4k左右，与服务器通信每次都会携带在http请求头中，如果使用cookie保存过多数据会带来性能问题，要程序员自己封装，原生的接口不友好；</li>
+<li>localStorage：除非被清除，否则永久保存，大小一般为5M，仅在浏览器中保存，不参与服务器的通信，原生接口可以，也可以自己封装来对Object和Array有更好的支持；</li>
+<li>sessionStorage：与上面的区别就是仅在当前会话下有效，关闭页面或者浏览器后被清除；</li>
+</ul>
+<h2 id="将一个函数的arguments转化为真正的数组"><a href="#将一个函数的arguments转化为真正的数组" class="headerlink" title="将一个函数的arguments转化为真正的数组"></a>将一个函数的arguments转化为真正的数组</h2><ul>
+<li>arguments是一个对象，每个对象都有，可以使用</li>
+<li>ES6提供一个方法，Array.form(arguments)来完成这个操作；</li>
+</ul>
+<h2 id="原生js获取其指定元素下面的所有元素节点"><a href="#原生js获取其指定元素下面的所有元素节点" class="headerlink" title="原生js获取其指定元素下面的所有元素节点"></a>原生js获取其指定元素下面的所有元素节点</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var box &#x3D; document.getElementById(&#39;box&#39;);</span><br><span class="line">console.log(box.getElementByTagName(&#39;*&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="给Array对象增加一个原型方法，功能是删除数组中重复的项"><a href="#给Array对象增加一个原型方法，功能是删除数组中重复的项" class="headerlink" title="给Array对象增加一个原型方法，功能是删除数组中重复的项"></a>给Array对象增加一个原型方法，功能是删除数组中重复的项</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.unique &#x3D; function()&#123;</span><br><span class="line">   var brr &#x3D; [],</span><br><span class="line">      obj &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  for(var i&#x3D;0;i&lt;this.length;i++)&#123;</span><br><span class="line">    if(!obj[this[i]])&#123;</span><br><span class="line">      obj[this[i]] &#x3D; true;</span><br><span class="line">      brr.push(this[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return brr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(arr.unique());</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="数据结构">
+      <i class="fa fa-chevron-left"></i> 数据结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/31/MongoDB-md/" rel="next" title="MongoDB.md">
+      MongoDB.md <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA200-200%E7%9A%84div%E5%9C%A8%E4%B8%8D%E5%90%8C%E5%88%86%E8%BE%A8%E7%8E%87%E5%B1%8F%E5%B9%95%E4%B8%8A%E4%B8%8B%E5%B7%A6%E5%8F%B3%E5%B1%85%E4%B8%AD%EF%BC%8C%E7%94%A8css%E5%AE%9E%E7%8E%B0%EF%BC%9B"><span class="nav-number">1.</span> <span class="nav-text">一个200*200的div在不同分辨率屏幕上下左右居中，用css实现；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E5%B7%A6%E4%B8%AD%E5%8F%B3%E5%B8%83%E5%B1%80%E5%8D%A0%E6%BB%A1%E5%B1%8F%E5%B9%95%EF%BC%8C%E4%B8%A4%E8%BE%B9%E5%9B%BA%E5%AE%9A200%EF%BC%8C%E4%B8%AD%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94%EF%BC%8C%E5%85%88%E5%8A%A0%E8%BD%BD%E4%B8%AD%E9%97%B4%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80"><span class="nav-number">2.</span> <span class="nav-text">写一个左中右布局占满屏幕，两边固定200，中间自适应，先加载中间，也就是双飞翼布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">清除浮动的几种方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">行内元素有哪些？块级元素有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css%E7%9A%84%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">css的盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css%E9%80%89%E6%8B%A9%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%93%AA%E4%BA%9B%E5%B1%9E%E6%80%A7%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF%EF%BC%9F%E4%BC%98%E5%85%88%E7%BA%A7%E6%80%8E%E4%B9%88%E7%AE%97%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">css选择符有哪些？哪些属性可以继承？优先级怎么算？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3%E6%96%B0%E5%A2%9E%E4%BC%AA%E7%B1%BB%E4%B8%BE%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">css3新增伪类举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flex%E5%B8%83%E5%B1%80%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">8.</span> <span class="nav-text">flex布局的应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%86%85%E6%A0%B8%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%BC%E5%AE%B9%EF%BC%9F%E5%8E%9F%E5%9B%A0%EF%BC%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9F%E5%B8%B8%E7%94%A8hack%E6%8A%80%E5%B7%A7"><span class="nav-number">9.</span> <span class="nav-text">常见浏览器的内核分别是什么？经常遇到的浏览器的兼容？原因？解决方法？常用hack技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html5%E6%A0%87%E7%AD%BE%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">10.</span> <span class="nav-text">html5标签有什么新特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86html5%E6%A0%87%E7%AD%BE%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">如何处理html5标签的浏览器兼容问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HBuilder"><span class="nav-number">12.</span> <span class="nav-text">HBuilder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%ADios%E9%94%AE%E7%9B%98%E9%A6%96%E5%AD%97%E6%AF%8D%E5%A4%A7%E5%86%99"><span class="nav-number">13.</span> <span class="nav-text">关闭ios键盘首字母大写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios%E9%94%AE%E7%9B%98%E7%82%B9%E5%87%BB%E9%BB%98%E8%AE%A4%E5%BC%B9%E5%87%BA%E6%95%B0%E5%AD%97"><span class="nav-number">14.</span> <span class="nav-text">ios键盘点击默认弹出数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios%E6%8C%89%E9%92%AE%E9%BB%98%E8%AE%A4%E9%AB%98%E4%BA%AE%E9%83%A8%E5%88%86%E5%88%A0%E9%99%A4"><span class="nav-number">15.</span> <span class="nav-text">ios按钮默认高亮部分删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html%E6%A0%87%E7%AD%BE%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%8A%A0%E7%B2%97%EF%BC%8C%E4%B8%8B%E6%A0%87%EF%BC%8C%E5%B1%85%E4%B8%AD%EF%BC%8C%E5%AD%97%E4%BD%93%E5%8A%A0%E7%B2%97"><span class="nav-number">16.</span> <span class="nav-text">html标签中的文本加粗，下标，居中，字体加粗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Doctype%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%8C%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">17.</span> <span class="nav-text">Doctype几种类型，什么作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">18.</span> <span class="nav-text">iframe的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div-css%E7%9B%B8%E6%AF%94%E8%BE%83table%EF%BC%88tr-td%EF%BC%89%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9"><span class="nav-number">19.</span> <span class="nav-text">div+css相比较table（tr td）有什么优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof-%E7%B1%BB%E5%9E%8B"><span class="nav-number">20.</span> <span class="nav-text">typeof 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E7%A7%92%E8%BE%93%E5%87%BA%E5%87%A0%EF%BC%88%E5%BC%82%E6%AD%A5%EF%BC%8C%E9%97%AD%E5%8C%85%EF%BC%89-%E8%BF%99%E9%87%8C%E6%9C%89%E9%97%AE%E9%A2%98"><span class="nav-number">21.</span> <span class="nav-text">几秒输出几（异步，闭包）???这里有问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">22.</span> <span class="nav-text">for循环的执行顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87"><span class="nav-number">23.</span> <span class="nav-text">作用域和变量提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E8%B0%83%E7%94%A8%E5%8F%91%E7%94%9F%E5%86%B2%E7%AA%81%E7%9A%84%E6%97%B6%E5%80%99%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98"><span class="nav-number">24.</span> <span class="nav-text">当调用发生冲突的时候优先级问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE"><span class="nav-number">25.</span> <span class="nav-text">变量提升+作用域链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this%E6%8C%87%E5%90%91"><span class="nav-number">26.</span> <span class="nav-text">this指向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8es5%E5%92%8Ces6%E5%88%86%E5%88%AB%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">27.</span> <span class="nav-text">用es5和es6分别封装一个数组去重的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%96%B9%E6%B3%95"><span class="nav-number">28.</span> <span class="nav-text">封装一个深拷贝方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BA%AB%E4%BB%BD%E8%AF%81%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">29.</span> <span class="nav-text">身份证的正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%97%AE%E9%A2%98"><span class="nav-number">30.</span> <span class="nav-text">作用域问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%EF%BC%8C%E5%AD%98%E5%82%A8%E9%97%AE%E9%A2%98"><span class="nav-number">31.</span> <span class="nav-text">变量提升，存储问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33"><span class="nav-number">32.</span> <span class="nav-text">33</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E5%A6%82%E4%B8%8B%E9%97%AE%E9%A2%98"><span class="nav-number">33.</span> <span class="nav-text">解释一下如下问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">34.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a%E6%A0%87%E7%AD%BE"><span class="nav-number">35.</span> <span class="nav-text">a标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95"><span class="nav-number">36.</span> <span class="nav-text">数组方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">37.</span> <span class="nav-text">&#x3D;&#x3D;和&#x3D;&#x3D;&#x3D;的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">38.</span> <span class="nav-text">判断是否为数组的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95-1"><span class="nav-number">39.</span> <span class="nav-text">数组方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM%E6%93%8D%E4%BD%9C-%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%EF%BC%8C%E7%A7%BB%E9%99%A4%EF%BC%8C%E7%A7%BB%E5%8A%A8%EF%BC%8C%E6%8F%92%E5%85%A5%EF%BC%8C%E5%A4%8D%E5%88%B6%EF%BC%8C%E5%88%9B%E5%BB%BA%EF%BC%8C%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9"><span class="nav-number">40.</span> <span class="nav-text">DOM操作-如何添加，移除，移动，插入，复制，创建，查找节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6"><span class="nav-number">41.</span> <span class="nav-text">如何阻止事件冒泡和默认事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%88%B0%E5%BA%95%E5%B9%B2%E4%BA%86%E4%BB%80%E4%B9%88%E4%BA%8B%EF%BC%9F"><span class="nav-number">42.</span> <span class="nav-text">new操作符到底干了什么事？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">43.</span> <span class="nav-text">js延迟加载方式有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E5%8F%8A%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">44.</span> <span class="nav-text">严格模式及优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98"><span class="nav-number">45.</span> <span class="nav-text">执行优先级问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E4%B8%AA%E9%A2%98%E6%9C%89%E7%82%B9%E9%BA%BB%E7%83%A6"><span class="nav-number">46.</span> <span class="nav-text">这个题有点麻烦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E6%B2%A1%E6%9C%89%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">47.</span> <span class="nav-text">js没有块级作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b%E7%BB%A7%E6%89%BFa%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">48.</span> <span class="nav-text">b继承a的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AAjs%E5%87%BD%E6%95%B0parseQueryString%EF%BC%8C%E4%BB%96%E7%9A%84%E7%94%A8%E9%80%94%E6%98%AF%E6%8A%8AURL%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%EF%BC%8C%E5%A6%82%EF%BC%9Avar-url-%E2%80%9Chttp-witmax-cn-index-php-key0-0-amp-key1-1-amp-key2-2-quot"><span class="nav-number">49.</span> <span class="nav-text">请编写一个js函数parseQueryString，他的用途是把URL参数解析为一个对象，如：var url &#x3D; “http:&#x2F;&#x2F;witmax.cn&#x2F;index.php?key0&#x3D;0&amp;key1&#x3D;1&amp;key2&#x3D;2&quot;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6%EF%BC%8C%E5%B9%B6%E7%BB%9F%E8%AE%A1%E6%AC%A1%E6%95%B0"><span class="nav-number">50.</span> <span class="nav-text">判断字符串中的出现次数最多的字符，并统计次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E4%B8%BA%E6%95%B0%E7%BB%84%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%EF%BC%9FJS%E6%9C%89%E5%93%AA%E4%BA%9B%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="nav-number">51.</span> <span class="nav-text">JS判断变量为数组有哪些方法？JS有哪些创建对象的方式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%88%90%EF%BC%9F"><span class="nav-number">52.</span> <span class="nav-text">如何判断图片加载完成？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key%E7%9A%84%E5%9D%91"><span class="nav-number">53.</span> <span class="nav-text">key的坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E8%A7%A3%E9%87%8A%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="nav-number">54.</span> <span class="nav-text">请解释什么是事件代理，也就是事件委托</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E5%87%BA%E5%87%A0%E7%A7%8Djs%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F"><span class="nav-number">55.</span> <span class="nav-text">说出几种js继承方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6%E8%AF%AD%E6%B3%95%E4%BA%86%E8%A7%A3%E5%A4%9A%E5%B0%91%EF%BC%8Cconst%E5%92%8Clet%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">56.</span> <span class="nav-text">ES6语法了解多少，const和let的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">57.</span> <span class="nav-text">数据类型的隐式转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Websocket%E5%92%8Cajax%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">58.</span> <span class="nav-text">Websocket和ajax的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie%E3%80%81localStorage%E3%80%81sessionStorage%E5%8C%BA%E5%88%AB"><span class="nav-number">59.</span> <span class="nav-text">cookie、localStorage、sessionStorage区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84arguments%E8%BD%AC%E5%8C%96%E4%B8%BA%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%95%B0%E7%BB%84"><span class="nav-number">60.</span> <span class="nav-text">将一个函数的arguments转化为真正的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%94%9Fjs%E8%8E%B7%E5%8F%96%E5%85%B6%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E8%8A%82%E7%82%B9"><span class="nav-number">61.</span> <span class="nav-text">原生js获取其指定元素下面的所有元素节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99Array%E5%AF%B9%E8%B1%A1%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8A%9F%E8%83%BD%E6%98%AF%E5%88%A0%E9%99%A4%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E9%A1%B9"><span class="nav-number">62.</span> <span class="nav-text">给Array对象增加一个原型方法，功能是删除数组中重复的项</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
